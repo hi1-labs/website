@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 🔁 REPLACE: App name -->
+  <title>Terms of Service — MyApp — Hi1 Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-card: #18181c;
+      --border: #2a2a30;
+      --text: #e8e8ed;
+      --text-secondary: #8a8a95;
+      --accent: #818cf8;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text);
+    }
+
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #6ee7b7, #34d399);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-weight: 600; font-size: 0.75rem; color: #0a0a0b;
+    }
+
+    .nav-logo-text { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; }
+
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .legal-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .legal-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-header .app-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      background: rgba(129, 140, 248, 0.12);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .legal-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .legal-header .last-updated {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .legal-section { margin-bottom: 2.5rem; }
+
+    .legal-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section ul {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section ul li { margin-bottom: 0.4rem; }
+
+    .legal-section a { color: var(--accent); text-decoration: none; }
+    .legal-section a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .legal-container { padding: 7rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">H1</div>
+      <span class="nav-logo-text">Hi1 Labs</span>
+    </a>
+    <div class="nav-links">
+      <a href="/myapp/">MyApp</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <div class="legal-container">
+    <div class="legal-header">
+      <!-- 🔁 REPLACE: App name -->
+      <div class="app-badge">MyApp</div>
+      <h1>Terms of Service</h1>
+      <!-- 🔁 REPLACE: Actual date -->
+      <p class="last-updated">Last updated: March 1, 2026</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Agreement to Terms</h2>
+      <!-- 🔁 REPLACE: App name -->
+      <p>By downloading, installing, or using MyApp (the "App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+      <p>The App is operated by Hi1 Labs ("we", "our", or "us").</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Use of the App</h2>
+      <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for your personal, non-commercial purposes, subject to these Terms.</p>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Copy, modify, or distribute the App or its content</li>
+        <li>Reverse engineer, decompile, or disassemble the App</li>
+        <li>Use the App for any unlawful purpose</li>
+        <li>Attempt to gain unauthorized access to the App's systems</li>
+        <li>Use the App in any way that could damage or impair its functionality</li>
+      </ul>
+    </div>
+
+    <!-- 🔁 ADD if your app has in-app purchases or subscriptions: -->
+    <!--
+    <div class="legal-section">
+      <h2>Purchases &amp; Subscriptions</h2>
+      <p>The App may offer in-app purchases or subscriptions. All purchases are processed through the Apple App Store or Google Play Store and are subject to their respective terms and refund policies.</p>
+      <p>Subscription prices are displayed before purchase. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel subscriptions in your device's account settings.</p>
+      <p>We do not directly handle any payment information. All transactions are managed securely by Apple or Google.</p>
+    </div>
+    -->
+
+    <!-- 🔁 ADD if your app has user accounts: -->
+    <!--
+    <div class="legal-section">
+      <h2>User Accounts</h2>
+      <p>You may be required to create an account to access certain features. You are responsible for maintaining the confidentiality of your account and for all activities under your account.</p>
+      <p>You can request deletion of your account at any time by emailing <a href="mailto:support@hi1labs.com">support@hi1labs.com</a> or through the in-app account settings.</p>
+    </div>
+    -->
+
+    <!-- 🔁 ADD if your app has user-generated content: -->
+    <!--
+    <div class="legal-section">
+      <h2>User Content</h2>
+      <p>You retain all rights to content you create within the App. We do not claim ownership of your content. Since content is stored locally on your device, you are responsible for backing up your data.</p>
+    </div>
+    -->
+
+    <div class="legal-section">
+      <h2>Intellectual Property</h2>
+      <p>The App and its original content, features, and functionality are owned by Hi1 Labs and are protected by international copyright, trademark, and other intellectual property laws.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Disclaimer of Warranties</h2>
+      <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+      <p>We do not guarantee that the App will be uninterrupted, secure, or error-free.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Hi1 Labs shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of profits, or loss of goodwill, arising from your use of the App.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Changes to These Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. We will notify you of significant changes by updating the "Last updated" date on this page. Your continued use of the App after any changes constitutes acceptance of the new Terms.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Governing Law</h2>
+      <!-- 🔁 REPLACE: Your actual jurisdiction -->
+      <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about these Terms, please contact us:</p>
+      <ul>
+        <li>Email: <a href="mailto:support@hi1labs.com">support@hi1labs.com</a></li>
+        <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Hi1 Labs &nbsp;·&nbsp; <a href="/myapp/">MyApp</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/">All Apps</a></p>
+  </footer>
+
+</body>
+</html>

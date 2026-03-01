@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 🔁 REPLACE: App name -->
+  <title>Privacy Policy — MyApp — Hi1 Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-card: #18181c;
+      --border: #2a2a30;
+      --text: #e8e8ed;
+      --text-secondary: #8a8a95;
+      --accent: #818cf8;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text);
+    }
+
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #6ee7b7, #34d399);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-weight: 600; font-size: 0.75rem; color: #0a0a0b;
+    }
+
+    .nav-logo-text { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; }
+
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .legal-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .legal-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-header .app-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      background: rgba(129, 140, 248, 0.12);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .legal-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .legal-header .last-updated {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .legal-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .legal-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section ul {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-section ul li { margin-bottom: 0.4rem; }
+
+    .legal-section a { color: var(--accent); text-decoration: none; }
+    .legal-section a:hover { text-decoration: underline; }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+    }
+
+    .data-table td { color: var(--text-secondary); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .legal-container { padding: 7rem 1.5rem 3rem; }
+      .data-table { font-size: 0.8rem; }
+      .data-table th, .data-table td { padding: 0.5rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">H1</div>
+      <span class="nav-logo-text">Hi1 Labs</span>
+    </a>
+    <div class="nav-links">
+      <a href="/myapp/">MyApp</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </nav>
+
+  <div class="legal-container">
+    <div class="legal-header">
+      <!-- 🔁 REPLACE: App name -->
+      <div class="app-badge">MyApp</div>
+      <h1>Privacy Policy</h1>
+      <!-- 🔁 REPLACE: Actual date -->
+      <p class="last-updated">Last updated: March 1, 2026</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Introduction</h2>
+      <!-- 🔁 REPLACE: App name and description -->
+      <p>Hi1 Labs ("we", "our", or "us") operates the MyApp mobile application (the "App"). This Privacy Policy explains how we collect, use, and protect your information when you use our App.</p>
+      <p>We are committed to protecting your privacy. Our app is designed with a privacy-first approach — we collect only what is strictly necessary for the App to function.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Information We Collect</h2>
+      <p>We believe in minimal data collection. Here is a summary of the data our App handles:</p>
+
+      <!-- 
+        🔁 REPLACE: This table MUST accurately reflect your app's actual data practices.
+        It must match your App Store Privacy Labels and Google Play Data Safety form.
+        
+        Remove rows that don't apply. Add rows for any data you DO collect.
+        Common categories: Analytics, Crash Reports, Device Info, User Content, 
+        Account Info, Purchase History, Usage Data, Location, Contacts, etc.
+      -->
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Collected?</th>
+            <th>Purpose</th>
+            <th>Shared?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Crash logs</td>
+            <td>Yes</td>
+            <td>App stability &amp; bug fixing</td>
+            <td>Firebase Crashlytics</td>
+          </tr>
+          <tr>
+            <td>Anonymous usage analytics</td>
+            <td>Yes</td>
+            <td>Improve app features</td>
+            <td>Firebase Analytics</td>
+          </tr>
+          <tr>
+            <td>User-created content</td>
+            <td>Stored locally only</td>
+            <td>Core app functionality</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Personal information (name, email)</td>
+            <td>No</td>
+            <td>—</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Location data</td>
+            <td>No</td>
+            <td>—</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-section">
+      <h2>Third-Party Services</h2>
+      <!-- 🔁 REPLACE: List ONLY the services your app actually uses -->
+      <p>Our App may use the following third-party services that have their own privacy policies:</p>
+      <ul>
+        <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Analytics</a> — anonymous usage statistics</li>
+        <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a> — crash reporting</li>
+        <!-- Add or remove services as needed:
+        <li><a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat</a> — subscription management</li>
+        <li><a href="https://policies.google.com/privacy" target="_blank">Google AdMob</a> — advertisements</li>
+        -->
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>Data Storage &amp; Security</h2>
+      <!-- 🔁 REPLACE: Describe your actual data storage approach -->
+      <p>All user-created content is stored locally on your device and is not transmitted to our servers. We do not maintain any external database of user data.</p>
+      <p>Anonymous analytics data processed by third-party services (Firebase) is handled according to their respective privacy policies and data processing agreements.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Data Retention &amp; Deletion</h2>
+      <p>Since user data is stored locally on your device, you can delete all app data at any time by uninstalling the App or clearing the App's data through your device settings.</p>
+      <p>Anonymous analytics data is retained for up to 14 months by Firebase Analytics, after which it is automatically deleted.</p>
+      <!-- 🔁 ADD if your app has user accounts:
+      <p>If you have an account, you can request account deletion by emailing <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>. We will process your request within 30 days.</p>
+      -->
+    </div>
+
+    <div class="legal-section">
+      <h2>Children's Privacy</h2>
+      <!-- 🔁 REPLACE: Adjust based on your app's target audience -->
+      <p>Our App is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately at <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Your Rights</h2>
+      <p>Depending on your location, you may have certain rights regarding your data, including the right to access, correct, or delete your personal information. Since we collect minimal data and store user content only locally on your device, most data management is directly in your control.</p>
+      <p>For any data-related requests, please contact us at <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us:</p>
+      <ul>
+        <li>Email: <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a></li>
+        <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Hi1 Labs &nbsp;·&nbsp; <a href="/myapp/">MyApp</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="/">All Apps</a></p>
+  </footer>
+
+</body>
+</html>
