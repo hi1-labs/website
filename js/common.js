@@ -19,6 +19,20 @@
         });
     }
 
+    /* ===== Transparent Nav on Scroll ===== */
+    const nav = document.querySelector('.nav-transparent');
+    const SCROLL_THRESHOLD = 16;
+
+    function updateNav() {
+        if (!nav) return;
+        nav.classList.toggle('nav-scrolled', window.scrollY > SCROLL_THRESHOLD);
+    }
+
+    if (nav) {
+        updateNav();
+        window.addEventListener('scroll', updateNav, { passive: true });
+    }
+
     /* ===== Mobile Menu ===== */
     const burger = document.getElementById('menu-toggle');
     const menu = document.getElementById('nav-menu');
@@ -29,6 +43,14 @@
             menu.classList.toggle('is-open', isOpen);
             burger.setAttribute('aria-expanded', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
+
+            if (nav) {
+                if (isOpen) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    updateNav();
+                }
+            }
         });
 
         menu.querySelectorAll('a').forEach(function (link) {
@@ -37,6 +59,10 @@
                 menu.classList.remove('is-open');
                 burger.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+
+                if (nav) {
+                    updateNav();
+                }
             });
         });
     }
