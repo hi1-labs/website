@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🔁 REPLACE: Update for each app -->
-    <title>Privacy Policy — App Name — Hi1 Labs</title>
-    <meta name="description" content="Privacy Policy for App Name by Hi1 Labs. Learn how we handle your data.">
+    <title>Privacy Policy — App Name — hi1 labs</title>
+    <meta name="description" content="Privacy Policy for App Name by hi1 labs. Learn how we handle your data.">
     <!-- End REPLACE -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -182,15 +182,20 @@
         @media (max-width: 767px) {
             .nav-burger { display: flex; }
             .nav-menu {
-                position: fixed; inset: 0; background: var(--bg-primary);
-                flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
+                position: fixed; inset: 0;
+                background: var(--bg-nav);
+                backdrop-filter: saturate(180%) blur(40px);
+                -webkit-backdrop-filter: saturate(180%) blur(40px);
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 0.25rem;
                 opacity: 0; visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
                 z-index: 99;
             }
             .nav-menu.is-open { opacity: 1; visibility: visible; }
-            .nav-menu a { font-size: 1.75rem; font-weight: 600; padding: 0.75rem 1.5rem; color: var(--text-primary); }
-            .nav-menu .theme-toggle { margin-top: 1rem; width: 48px; height: 48px; }
+            .nav-menu a { font-size: 1.5rem; font-weight: 600; padding: 1rem 2rem; color: var(--text-primary); border-radius: var(--radius-lg); width: 200px; text-align: center; transition: background-color 0.2s ease; }
+            .nav-menu a:hover { background-color: var(--accent-dim); }
+            .nav-menu .theme-toggle { margin-top: 1.5rem; width: 48px; height: 48px; border: 1px solid var(--border-strong); }
             .nav-menu .theme-toggle svg { width: 22px; height: 22px; }
         }
         @media (min-width: 768px) { .nav-burger { display: none; } }
@@ -406,7 +411,7 @@
         <!-- 🔁 REPLACE: Update "App Name", data practices, and third-party services for each app -->
 
         <h2>1. Introduction</h2>
-        <p>This Privacy Policy describes how <strong>Hi1 Labs</strong> ("we", "us", "our") handles information in connection with <strong>App Name</strong> ("the App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+        <p>This Privacy Policy describes how <strong>hi1 labs</strong> ("we", "us", "our") handles information in connection with <strong>App Name</strong> ("the App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
         <p><strong>Our core principle:</strong> We collect as little data as possible and never sell your personal information.</p>
 
         <h2>2. Information We Collect</h2>
@@ -546,7 +551,7 @@
                 <a href="/terms.html">Terms</a>
                 <a href="mailto:hello@hi1labs.com">Contact</a>
             </nav>
-            <p class="footer-copy">&copy; 2026 Hi1 Labs. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 hi1 labs. All rights reserved.</p>
         </div>
     </footer>
 

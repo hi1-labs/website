@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🔁 REPLACE: Update for each app -->
-    <title>App Name — Hi1 Labs</title>
+    <title>App Name — hi1 labs</title>
     <meta name="description" content="A clear, one-sentence description of what your app does and why it matters.">
-    <meta property="og:title" content="App Name — Hi1 Labs">
+    <meta property="og:title" content="App Name — hi1 labs">
     <meta property="og:description" content="A clear, one-sentence description of what your app does and why it matters.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hi1labs.com/myapp/">
@@ -266,19 +266,22 @@
             .nav-menu {
                 position: fixed;
                 inset: 0;
-                background: var(--bg-primary);
+                background: var(--bg-nav);
+                backdrop-filter: saturate(180%) blur(40px);
+                -webkit-backdrop-filter: saturate(180%) blur(40px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 0.5rem;
+                gap: 0.25rem;
                 opacity: 0;
                 visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
                 z-index: 99;
             }
             .nav-menu.is-open { opacity: 1; visibility: visible; }
-            .nav-menu a { font-size: 1.75rem; font-weight: 600; padding: 0.75rem 1.5rem; color: var(--text-primary); }
-            .nav-menu .theme-toggle { margin-top: 1rem; width: 48px; height: 48px; }
+            .nav-menu a { font-size: 1.5rem; font-weight: 600; padding: 1rem 2rem; color: var(--text-primary); border-radius: var(--radius-lg); width: 200px; text-align: center; transition: background-color 0.2s ease; }
+            .nav-menu a:hover { background-color: var(--accent-dim); }
+            .nav-menu .theme-toggle { margin-top: 1.5rem; width: 48px; height: 48px; border: 1px solid var(--border-strong); }
             .nav-menu .theme-toggle svg { width: 22px; height: 22px; }
         }
 
@@ -462,8 +465,8 @@
 
         /* ========== SCREENSHOTS ========== */
         .screenshots {
+            position: relative;
             padding: 4rem 0;
-            overflow: hidden;
         }
 
         .screenshots-track {
@@ -471,12 +474,56 @@
             gap: 1.5rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            padding: 1rem 1.5rem;
+            padding: 1rem max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem));
         }
 
         .screenshots-track::-webkit-scrollbar { display: none; }
+
+        .screenshots-fade-left,
+        .screenshots-fade-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3rem;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .screenshots-fade-left {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-secondary), transparent);
+        }
+
+        .screenshots-fade-right {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-secondary), transparent);
+        }
+
+        .screenshots-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .screenshots-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-strong);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .screenshots-dot.is-active {
+            background: var(--accent);
+            transform: scale(1.25);
+        }
 
         .screenshot-frame {
             flex-shrink: 0;
@@ -770,7 +817,9 @@
                     <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">See it in action.</h2>
                 </div>
             </div>
-            <div class="screenshots-track">
+            <div class="screenshots-fade-left" aria-hidden="true"></div>
+            <div class="screenshots-fade-right" aria-hidden="true"></div>
+            <div id="screenshots-track" class="screenshots-track">
                 <!-- 🔁 REPLACE: Add real screenshots. Use <img src="screenshot-1.png" alt="Description"> inside each frame -->
                 <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
                 <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>
@@ -779,6 +828,7 @@
                 <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 5</div></div>
                 <!-- End REPLACE -->
             </div>
+            <div id="screenshots-dots" class="screenshots-dots" aria-label="Screenshot navigation"></div>
         </section>
 
         <!-- Features -->
@@ -910,7 +960,7 @@
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms</a>
             </nav>
-            <p class="footer-copy">&copy; 2026 Hi1 Labs. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 hi1 labs. All rights reserved.</p>
         </div>
     </footer>
 
@@ -954,6 +1004,43 @@
                         document.body.style.overflow = '';
                     });
                 });
+            }
+
+            /* Screenshot dots navigation */
+            const track = document.getElementById('screenshots-track');
+            const dotsContainer = document.getElementById('screenshots-dots');
+            if (track && dotsContainer) {
+                const frames = track.querySelectorAll('.screenshot-frame');
+                frames.forEach(function (_, i) {
+                    const dot = document.createElement('button');
+                    dot.className = 'screenshots-dot' + (i === 0 ? ' is-active' : '');
+                    dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+                    dot.addEventListener('click', function () {
+                        frames[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = dotsContainer.querySelectorAll('.screenshots-dot');
+                let scrollTimeout;
+                track.addEventListener('scroll', function () {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(function () {
+                        const trackRect = track.getBoundingClientRect();
+                        const trackCenter = trackRect.left + trackRect.width / 2;
+                        let closestIndex = 0;
+                        let closestDist = Infinity;
+                        frames.forEach(function (frame, i) {
+                            const rect = frame.getBoundingClientRect();
+                            const frameCenter = rect.left + rect.width / 2;
+                            const dist = Math.abs(frameCenter - trackCenter);
+                            if (dist < closestDist) { closestDist = dist; closestIndex = i; }
+                        });
+                        dots.forEach(function (d, i) {
+                            d.classList.toggle('is-active', i === closestIndex);
+                        });
+                    }, 50);
+                }, { passive: true });
             }
 
             const observed = document.querySelectorAll('.animate-on-scroll');

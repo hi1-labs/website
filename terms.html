@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🔁 REPLACE: Update for each app -->
-    <title>Terms of Service — App Name — Hi1 Labs</title>
-    <meta name="description" content="Terms of Service for App Name by Hi1 Labs.">
+    <title>Terms of Service — App Name — hi1 labs</title>
+    <meta name="description" content="Terms of Service for App Name by hi1 labs.">
     <!-- End REPLACE -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,15 +176,20 @@
         @media (max-width: 767px) {
             .nav-burger { display: flex; }
             .nav-menu {
-                position: fixed; inset: 0; background: var(--bg-primary);
-                flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
+                position: fixed; inset: 0;
+                background: var(--bg-nav);
+                backdrop-filter: saturate(180%) blur(40px);
+                -webkit-backdrop-filter: saturate(180%) blur(40px);
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 0.25rem;
                 opacity: 0; visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
                 z-index: 99;
             }
             .nav-menu.is-open { opacity: 1; visibility: visible; }
-            .nav-menu a { font-size: 1.75rem; font-weight: 600; padding: 0.75rem 1.5rem; color: var(--text-primary); }
-            .nav-menu .theme-toggle { margin-top: 1rem; width: 48px; height: 48px; }
+            .nav-menu a { font-size: 1.5rem; font-weight: 600; padding: 1rem 2rem; color: var(--text-primary); border-radius: var(--radius-lg); width: 200px; text-align: center; transition: background-color 0.2s ease; }
+            .nav-menu a:hover { background-color: var(--accent-dim); }
+            .nav-menu .theme-toggle { margin-top: 1.5rem; width: 48px; height: 48px; border: 1px solid var(--border-strong); }
             .nav-menu .theme-toggle svg { width: 22px; height: 22px; }
         }
         @media (min-width: 768px) { .nav-burger { display: none; } }
@@ -350,7 +355,7 @@
 
         <h2>1. Agreement to Terms</h2>
         <p>By downloading, installing, or using <strong>App Name</strong> ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
-        <p>The App is developed and maintained by <strong>Hi1 Labs</strong> ("we", "us", "our").</p>
+        <p>The App is developed and maintained by <strong>hi1 labs</strong> ("we", "us", "our").</p>
 
         <h2>2. Use of the App</h2>
         <p>You agree to use the App only for lawful purposes and in accordance with these Terms. You agree not to:</p>
@@ -395,13 +400,13 @@
         -->
 
         <h2>3. Intellectual Property</h2>
-        <p>The App and its original content, features, and functionality are owned by Hi1 Labs and are protected by international copyright, trademark, and other intellectual property laws.</p>
+        <p>The App and its original content, features, and functionality are owned by hi1 labs and are protected by international copyright, trademark, and other intellectual property laws.</p>
 
         <h2>4. Disclaimer of Warranties</h2>
         <p>The App is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
 
         <h2>5. Limitation of Liability</h2>
-        <p>To the fullest extent permitted by law, Hi1 Labs shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, arising from:</p>
+        <p>To the fullest extent permitted by law, hi1 labs shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, arising from:</p>
         <ul>
             <li>Your use of or inability to use the App</li>
             <li>Any unauthorized access to your data</li>
@@ -435,7 +440,7 @@
                 <a href="/privacy.html">Privacy</a>
                 <a href="mailto:hello@hi1labs.com">Contact</a>
             </nav>
-            <p class="footer-copy">&copy; 2026 Hi1 Labs. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 hi1 labs. All rights reserved.</p>
         </div>
     </footer>
 
