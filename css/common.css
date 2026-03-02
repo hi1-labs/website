@@ -11,7 +11,7 @@
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
     --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f7;
+    --bg-secondary: #ffffff;
     --bg-elevated: #ffffff;
     --bg-card: #ffffff;
     --bg-nav: rgba(255, 255, 255, 0.82);
@@ -51,7 +51,7 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --bg-primary: #000000;
-        --bg-secondary: #111111;
+        --bg-secondary: #000000;
         --bg-elevated: #1c1c1e;
         --bg-card: #1c1c1e;
         --bg-nav: rgba(0, 0, 0, 0.82);
@@ -81,7 +81,7 @@
 /* ========== THEME: DARK (manual) ========== */
 :root[data-theme="dark"] {
     --bg-primary: #000000;
-    --bg-secondary: #111111;
+    --bg-secondary: #000000;
     --bg-elevated: #1c1c1e;
     --bg-card: #1c1c1e;
     --bg-nav: rgba(0, 0, 0, 0.82);
@@ -138,7 +138,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 max(1.5rem, env(safe-area-inset-left));
+    padding: 0 max(1.5rem, calc((100vw - var(--max-width)) / 2));
     background: var(--bg-nav);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -278,21 +278,11 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
         padding: 1rem 2rem;
         color: var(--text-primary);
         border-radius: var(--radius-lg);
-        transition: background-color 0.2s ease;
-        width: 200px;
+        transition: color 0.2s ease;
         text-align: center;
     }
 
-    .nav-menu a:hover { background-color: var(--accent-dim); }
-
-    .nav-menu .theme-toggle {
-        margin-top: 1.5rem;
-        width: 48px;
-        height: 48px;
-        border: 1px solid var(--border-strong);
-    }
-
-    .nav-menu .theme-toggle svg { width: 22px; height: 22px; }
+    .nav-menu a:hover { color: var(--accent); background-color: transparent; }
 }
 
 @media (min-width: 768px) {
