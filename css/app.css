@@ -72,6 +72,10 @@
 }
 
 /* ========== STORE BADGES ========== */
+.app-hero-content .marquee {
+    margin-top: 1.5rem;
+}
+
 .store-badges {
     display: flex;
     justify-content: center;

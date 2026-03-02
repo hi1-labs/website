@@ -101,6 +101,10 @@
     flex-wrap: wrap;
 }
 
+.hero-content .marquee {
+    margin-top: 2.5rem;
+}
+
 /* ========== APPS CAROUSEL ========== */
 .apps-carousel {
     position: relative;
