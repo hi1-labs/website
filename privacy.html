@@ -1,319 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 🔁 REPLACE: App name -->
-  <title>Privacy Policy — MyApp — Hi1 Labs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0b;
-      --bg-card: #18181c;
-      --border: #2a2a30;
-      --text: #e8e8ed;
-      --text-secondary: #8a8a95;
-      --accent: #818cf8;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    <!-- 🔁 REPLACE: Update for each app -->
+    <title>Privacy Policy — App Name — Hi1 Labs</title>
+    <meta name="description" content="Privacy Policy for App Name by Hi1 Labs. Learn how we handle your data.">
+    <!-- End REPLACE -->
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        (function(){var t=localStorage.getItem('hi1-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
+    </script>
+    <style>
+        /* ========== RESET ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.25rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(10, 10, 11, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
+        /* ========== THEME: LIGHT ========== */
+        :root {
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-nav: rgba(255, 255, 255, 0.82);
+            --bg-card: #ffffff;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-strong: rgba(0, 0, 0, 0.12);
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --text-tertiary: #86868b;
+            --accent: #007AFF;
+            --accent-hover: #0066d6;
+            --accent-dim: rgba(0, 122, 255, 0.07);
+            --table-header-bg: #f5f5f7;
+            --table-row-alt: rgba(0, 0, 0, 0.02);
+            --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            --max-width: 1080px;
+            --max-width-narrow: 720px;
+            --nav-height: 56px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+        }
 
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none; color: var(--text);
-    }
+        /* ========== THEME: DARK (system) ========== */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-primary: #000000;
+                --bg-secondary: #111111;
+                --bg-nav: rgba(0, 0, 0, 0.82);
+                --bg-card: #1c1c1e;
+                --border: rgba(255, 255, 255, 0.07);
+                --border-strong: rgba(255, 255, 255, 0.14);
+                --text-primary: #f5f5f7;
+                --text-secondary: #86868b;
+                --text-tertiary: #6e6e73;
+                --accent: #0A84FF;
+                --accent-hover: #409cff;
+                --accent-dim: rgba(10, 132, 255, 0.1);
+                --table-header-bg: #1c1c1e;
+                --table-row-alt: rgba(255, 255, 255, 0.02);
+            }
+        }
 
-    .nav-logo-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, #6ee7b7, #34d399);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-weight: 600; font-size: 0.75rem; color: #0a0a0b;
-    }
+        /* ========== THEME: DARK (manual) ========== */
+        :root[data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-nav: rgba(0, 0, 0, 0.82);
+            --bg-card: #1c1c1e;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #0A84FF;
+            --accent-hover: #409cff;
+            --accent-dim: rgba(10, 132, 255, 0.1);
+            --table-header-bg: #1c1c1e;
+            --table-row-alt: rgba(255, 255, 255, 0.02);
+        }
 
-    .nav-logo-text { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; }
+        /* ========== BASE ========== */
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: var(--transition-theme);
+            overflow-x: hidden;
+        }
 
-    .legal-container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 8rem 2rem 4rem;
-    }
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 
-    .legal-header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
+        /* ========== NAVIGATION ========== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 max(1.5rem, env(safe-area-inset-left));
+            background: var(--bg-nav);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transition: var(--transition-theme);
+        }
 
-    .legal-header .app-badge {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      background: rgba(129, 140, 248, 0.12);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; z-index: 101; }
 
-    .legal-header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.5rem;
-    }
+        .logo-mark {
+            font-family: var(--font-body);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.06em;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+            line-height: 1;
+        }
 
-    .legal-header .last-updated {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
+        .nav-logo:hover .logo-mark { color: var(--accent); }
 
-    .legal-section {
-      margin-bottom: 2.5rem;
-    }
+        .nav-actions { display: flex; align-items: center; gap: 0.25rem; z-index: 101; }
 
-    .legal-section h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
+        .nav-menu { display: flex; align-items: center; gap: 0.25rem; }
 
-    .legal-section p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
+        .nav-menu a {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: var(--radius-full);
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .nav-menu a:hover { color: var(--text-primary); background-color: var(--accent-dim); }
 
-    .legal-section ul {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
+        .theme-toggle {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .theme-toggle:hover { color: var(--text-primary); background-color: var(--accent-dim); }
+        .theme-toggle svg { width: 18px; height: 18px; }
 
-    .legal-section ul li { margin-bottom: 0.4rem; }
+        .theme-toggle .icon-moon { display: none; }
+        .theme-toggle .icon-sun { display: block; }
 
-    .legal-section a { color: var(--accent); text-decoration: none; }
-    .legal-section a:hover { text-decoration: underline; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
+            :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+        }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="light"] .theme-toggle .icon-sun { display: block; }
 
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.875rem;
-    }
+        .nav-burger {
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            width: 36px; height: 36px; border-radius: var(--radius-full);
+            gap: 5px; z-index: 101; transition: background-color 0.2s ease;
+        }
+        .nav-burger:hover { background-color: var(--accent-dim); }
+        .nav-burger span { display: block; width: 16px; height: 1.5px; background: var(--text-primary); border-radius: 1px; transition: transform 0.3s ease; }
+        .nav-burger.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+        .nav-burger.is-open span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
 
-    .data-table th,
-    .data-table td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
+        @media (max-width: 767px) {
+            .nav-burger { display: flex; }
+            .nav-menu {
+                position: fixed; inset: 0; background: var(--bg-primary);
+                flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
+                opacity: 0; visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+                z-index: 99;
+            }
+            .nav-menu.is-open { opacity: 1; visibility: visible; }
+            .nav-menu a { font-size: 1.75rem; font-weight: 600; padding: 0.75rem 1.5rem; color: var(--text-primary); }
+            .nav-menu .theme-toggle { margin-top: 1rem; width: 48px; height: 48px; }
+            .nav-menu .theme-toggle svg { width: 22px; height: 22px; }
+        }
+        @media (min-width: 768px) { .nav-burger { display: none; } }
 
-    .data-table th {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-secondary);
-      background: var(--bg-card);
-    }
+        /* ========== LEGAL CONTENT ========== */
+        .legal {
+            max-width: var(--max-width-narrow);
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+        }
 
-    .data-table td { color: var(--text-secondary); }
+        .legal-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-    footer a { color: var(--text-secondary); text-decoration: none; }
-    footer a:hover { color: var(--text); }
+        .legal-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
 
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
-      .legal-container { padding: 7rem 1.5rem 3rem; }
-      .data-table { font-size: 0.8rem; }
-      .data-table th, .data-table td { padding: 0.5rem 0.5rem; }
-    }
-  </style>
+        .legal-header h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-meta {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .legal h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .legal h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .legal p {
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .legal ul, .legal ol {
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .legal li { margin-bottom: 0.35rem; }
+
+        .legal a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-dim);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+        .legal a:hover { text-decoration-color: var(--accent); }
+
+        .legal strong { color: var(--text-primary); font-weight: 600; }
+
+        /* ========== DATA TABLE ========== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            min-width: 500px;
+        }
+
+        .data-table th {
+            background: var(--table-header-bg);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background: var(--table-row-alt);
+        }
+
+        .data-table .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-yes {
+            background: rgba(52, 199, 89, 0.12);
+            color: #34c759;
+        }
+
+        .badge-no {
+            background: var(--accent-dim);
+            color: var(--text-tertiary);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            transition: var(--transition-theme);
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer .logo-mark { font-size: 1.125rem; color: var(--text-tertiary); }
+        .footer-nav { display: flex; gap: 1.5rem; }
+        .footer-nav a { font-size: 0.85rem; color: var(--text-tertiary); transition: color 0.2s ease; }
+        .footer-nav a:hover { color: var(--text-primary); }
+        .footer-copy { font-size: 0.8rem; color: var(--text-tertiary); }
+
+        @media (max-width: 479px) {
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        button:focus:not(:focus-visible), a:focus:not(:focus-visible) { outline: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-icon">H1</div>
-      <span class="nav-logo-text">Hi1 Labs</span>
-    </a>
-    <div class="nav-links">
-      <a href="/myapp/">MyApp</a>
-      <a href="terms.html">Terms</a>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="/" class="nav-logo" aria-label="hi1 labs home">
+            <span class="logo-mark">h1</span>
+        </a>
 
-  <div class="legal-container">
-    <div class="legal-header">
-      <!-- 🔁 REPLACE: App name -->
-      <div class="app-badge">MyApp</div>
-      <h1>Privacy Policy</h1>
-      <!-- 🔁 REPLACE: Actual date -->
-      <p class="last-updated">Last updated: March 1, 2026</p>
-    </div>
+        <div id="nav-menu" class="nav-menu">
+            <a href="/">Home</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </div>
 
-    <div class="legal-section">
-      <h2>Introduction</h2>
-      <!-- 🔁 REPLACE: App name and description -->
-      <p>Hi1 Labs ("we", "our", or "us") operates the MyApp mobile application (the "App"). This Privacy Policy explains how we collect, use, and protect your information when you use our App.</p>
-      <p>We are committed to protecting your privacy. Our app is designed with a privacy-first approach — we collect only what is strictly necessary for the App to function.</p>
-    </div>
+        <div class="nav-actions">
+            <button id="menu-toggle" class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-    <div class="legal-section">
-      <h2>Information We Collect</h2>
-      <p>We believe in minimal data collection. Here is a summary of the data our App handles:</p>
+    <main class="legal">
+        <header class="legal-header">
+            <p class="legal-eyebrow">Legal</p>
+            <!-- 🔁 REPLACE: Update app name -->
+            <h1>Privacy Policy</h1>
+            <p class="legal-meta">Last updated: March 1, 2026</p>
+            <!-- End REPLACE -->
+        </header>
 
-      <!-- 
-        🔁 REPLACE: This table MUST accurately reflect your app's actual data practices.
-        It must match your App Store Privacy Labels and Google Play Data Safety form.
-        
-        Remove rows that don't apply. Add rows for any data you DO collect.
-        Common categories: Analytics, Crash Reports, Device Info, User Content, 
-        Account Info, Purchase History, Usage Data, Location, Contacts, etc.
-      -->
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Data Type</th>
-            <th>Collected?</th>
-            <th>Purpose</th>
-            <th>Shared?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Crash logs</td>
-            <td>Yes</td>
-            <td>App stability &amp; bug fixing</td>
-            <td>Firebase Crashlytics</td>
-          </tr>
-          <tr>
-            <td>Anonymous usage analytics</td>
-            <td>Yes</td>
-            <td>Improve app features</td>
-            <td>Firebase Analytics</td>
-          </tr>
-          <tr>
-            <td>User-created content</td>
-            <td>Stored locally only</td>
-            <td>Core app functionality</td>
-            <td>No</td>
-          </tr>
-          <tr>
-            <td>Personal information (name, email)</td>
-            <td>No</td>
-            <td>—</td>
-            <td>No</td>
-          </tr>
-          <tr>
-            <td>Location data</td>
-            <td>No</td>
-            <td>—</td>
-            <td>No</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <!-- 🔁 REPLACE: Update "App Name", data practices, and third-party services for each app -->
 
-    <div class="legal-section">
-      <h2>Third-Party Services</h2>
-      <!-- 🔁 REPLACE: List ONLY the services your app actually uses -->
-      <p>Our App may use the following third-party services that have their own privacy policies:</p>
-      <ul>
-        <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Analytics</a> — anonymous usage statistics</li>
-        <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a> — crash reporting</li>
-        <!-- Add or remove services as needed:
-        <li><a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat</a> — subscription management</li>
-        <li><a href="https://policies.google.com/privacy" target="_blank">Google AdMob</a> — advertisements</li>
+        <h2>1. Introduction</h2>
+        <p>This Privacy Policy describes how <strong>Hi1 Labs</strong> ("we", "us", "our") handles information in connection with <strong>App Name</strong> ("the App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+        <p><strong>Our core principle:</strong> We collect as little data as possible and never sell your personal information.</p>
+
+        <h2>2. Information We Collect</h2>
+        <p>Here is a clear breakdown of our data practices:</p>
+
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Collected?</th>
+                        <th>Purpose</th>
+                        <th>Shared?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 🔁 REPLACE: Update table rows to match your app's actual data practices -->
+                    <tr>
+                        <td>Crash logs</td>
+                        <td><span class="badge badge-yes">Yes</span></td>
+                        <td>Fix bugs and improve stability (via Firebase Crashlytics)</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Anonymous usage analytics</td>
+                        <td><span class="badge badge-yes">Yes</span></td>
+                        <td>Understand which features are used (via Firebase Analytics)</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>User-created content</td>
+                        <td><span class="badge badge-yes">Yes</span></td>
+                        <td>Stored locally on your device only</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Personal information</td>
+                        <td><span class="badge badge-no">No</span></td>
+                        <td>—</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Location data</td>
+                        <td><span class="badge badge-no">No</span></td>
+                        <td>—</td>
+                        <td>No</td>
+                    </tr>
+                    <!-- End REPLACE -->
+                </tbody>
+            </table>
+        </div>
+
+        <h2>3. Third-Party Services</h2>
+        <p>The App uses the following third-party services that may collect data according to their own privacy policies:</p>
+        <ul>
+            <!-- 🔁 REPLACE: Update third-party services list -->
+            <li><strong>Firebase Analytics</strong> (Google) — anonymous usage analytics. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+            <li><strong>Firebase Crashlytics</strong> (Google) — crash reporting. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+            <!-- End REPLACE -->
+        </ul>
+
+        <!-- Uncomment if your app has in-app purchases or subscriptions
+        <h2>X. In-App Purchases &amp; Subscriptions</h2>
+        <p>Purchases are processed entirely by Apple (App Store) or Google (Play Store). We do not collect or store any payment information. Please refer to their respective privacy policies:</p>
+        <ul>
+            <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        </ul>
         -->
-      </ul>
-    </div>
 
-    <div class="legal-section">
-      <h2>Data Storage &amp; Security</h2>
-      <!-- 🔁 REPLACE: Describe your actual data storage approach -->
-      <p>All user-created content is stored locally on your device and is not transmitted to our servers. We do not maintain any external database of user data.</p>
-      <p>Anonymous analytics data processed by third-party services (Firebase) is handled according to their respective privacy policies and data processing agreements.</p>
-    </div>
+        <!-- Uncomment if your app has user accounts
+        <h2>X. User Accounts</h2>
+        <p>If you create an account, we store:</p>
+        <ul>
+            <li>Your email address (for login and communication)</li>
+            <li>Account preferences</li>
+        </ul>
+        <p>Account data is stored securely and is never shared with third parties for marketing purposes.</p>
+        -->
 
-    <div class="legal-section">
-      <h2>Data Retention &amp; Deletion</h2>
-      <p>Since user data is stored locally on your device, you can delete all app data at any time by uninstalling the App or clearing the App's data through your device settings.</p>
-      <p>Anonymous analytics data is retained for up to 14 months by Firebase Analytics, after which it is automatically deleted.</p>
-      <!-- 🔁 ADD if your app has user accounts:
-      <p>If you have an account, you can request account deletion by emailing <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>. We will process your request within 30 days.</p>
-      -->
-    </div>
+        <!-- Uncomment if your app allows user-generated content with cloud sync
+        <h2>X. User-Generated Content</h2>
+        <p>Content you create in the App is stored locally on your device by default. If you choose to enable cloud sync, your content will be stored in our secure cloud infrastructure.</p>
+        <ul>
+            <li>We do not access or review your content</li>
+            <li>Your content is encrypted in transit</li>
+            <li>You can delete your content at any time</li>
+        </ul>
+        -->
 
-    <div class="legal-section">
-      <h2>Children's Privacy</h2>
-      <!-- 🔁 REPLACE: Adjust based on your app's target audience -->
-      <p>Our App is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately at <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>.</p>
-    </div>
+        <h2>4. Data Storage &amp; Security</h2>
+        <ul>
+            <li>All user-created content is stored <strong>locally on your device</strong></li>
+            <li>Analytics data is processed by Firebase according to their security standards</li>
+            <li>We do not maintain our own servers that store your personal data</li>
+        </ul>
 
-    <div class="legal-section">
-      <h2>Your Rights</h2>
-      <p>Depending on your location, you may have certain rights regarding your data, including the right to access, correct, or delete your personal information. Since we collect minimal data and store user content only locally on your device, most data management is directly in your control.</p>
-      <p>For any data-related requests, please contact us at <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a>.</p>
-    </div>
+        <h2>5. Data Retention &amp; Deletion</h2>
+        <ul>
+            <li><strong>Firebase data</strong> is retained for up to 14 months, then automatically deleted</li>
+            <li><strong>Local data</strong> is deleted when you uninstall the App or clear its data</li>
+            <li>You can request deletion of analytics data by contacting us</li>
+        </ul>
 
-    <div class="legal-section">
-      <h2>Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-    </div>
+        <h2>6. Children's Privacy</h2>
+        <p>The App is not intended for children under 13 years of age. We do not knowingly collect data from children. If you believe we have inadvertently collected data from a child, please contact us and we will promptly delete it.</p>
 
-    <div class="legal-section">
-      <h2>Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us:</p>
-      <ul>
-        <li>Email: <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a></li>
-        <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
-      </ul>
-    </div>
-  </div>
+        <h2>7. Your Rights</h2>
+        <p>Depending on your location, you may have the right to:</p>
+        <ul>
+            <li>Access the data we hold about you</li>
+            <li>Request deletion of your data</li>
+            <li>Opt out of analytics collection</li>
+            <li>Request data portability</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us using the details below.</p>
 
-  <footer>
-    <p>&copy; 2026 Hi1 Labs &nbsp;·&nbsp; <a href="/myapp/">MyApp</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="/">All Apps</a></p>
-  </footer>
+        <h2>8. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by updating the "Last updated" date. Your continued use of the App after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>9. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+        <ul>
+            <li>Email: <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a></li>
+            <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
+        </ul>
+
+        <!-- End REPLACE -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="/" class="logo-mark" style="text-decoration: none;">h1</a>
+            <nav class="footer-nav">
+                <a href="/">Home</a>
+                <a href="/terms.html">Terms</a>
+                <a href="mailto:hello@hi1labs.com">Contact</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Hi1 Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const STORAGE_KEY = 'hi1-theme';
+            const root = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+
+            function getCurrentTheme() {
+                const explicit = root.getAttribute('data-theme');
+                if (explicit) return explicit;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            if (toggle) {
+                toggle.addEventListener('click', function () {
+                    const current = getCurrentTheme();
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    root.setAttribute('data-theme', next);
+                    localStorage.setItem(STORAGE_KEY, next);
+                });
+            }
+
+            const burger = document.getElementById('menu-toggle');
+            const menu = document.getElementById('nav-menu');
+            if (burger && menu) {
+                burger.addEventListener('click', function () {
+                    const isOpen = burger.classList.toggle('is-open');
+                    menu.classList.toggle('is-open', isOpen);
+                    burger.setAttribute('aria-expanded', isOpen);
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                });
+                menu.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        burger.classList.remove('is-open');
+                        menu.classList.remove('is-open');
+                        burger.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        })();
+    </script>
 
 </body>
 </html>
