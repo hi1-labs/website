@@ -110,18 +110,26 @@
                     <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">See it in action.</h2>
                 </div>
             </div>
-            <div class="screenshots-fade-left" aria-hidden="true"></div>
-            <div class="screenshots-fade-right" aria-hidden="true"></div>
-            <div id="screenshots-track" class="screenshots-track">
-                <!-- 🔁 REPLACE: Add real screenshots. Use <img src="screenshot-1.png" alt="Description"> inside each frame -->
-                <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
-                <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>
-                <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 3</div></div>
-                <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 4</div></div>
-                <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 5</div></div>
-                <!-- End REPLACE -->
+            <div class="carousel" id="screenshots-carousel">
+                <button class="carousel-arrow carousel-prev" aria-label="Previous screenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="carousel-arrow carousel-next" aria-label="Next screenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div class="carousel-viewport">
+                    <div id="screenshots-track" class="carousel-track">
+                        <!-- 🔁 REPLACE: Add real screenshots. Use <img src="screenshot-1.png" alt="Description"> inside each frame -->
+                        <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
+                        <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>
+                        <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 3</div></div>
+                        <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 4</div></div>
+                        <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 5</div></div>
+                        <!-- End REPLACE -->
+                    </div>
+                </div>
+                <div id="screenshots-dots" class="carousel-dots" aria-label="Screenshot navigation"></div>
             </div>
-            <div id="screenshots-dots" class="screenshots-dots" aria-label="Screenshot navigation"></div>
         </section>
 
         <!-- Features -->
