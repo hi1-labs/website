@@ -1,0 +1,288 @@
+/* ========== APP HERO ========== */
+.app-hero {
+    position: relative;
+    text-align: center;
+    padding: calc(var(--nav-height) + 4rem) 1.5rem 4rem;
+    overflow: hidden;
+}
+
+.app-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50vw;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: var(--hero-orb-opacity);
+    pointer-events: none;
+}
+
+.app-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.app-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* 🔁 REPLACE: Use actual app icon image instead of placeholder */
+.app-icon-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent), #a855f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+/* End REPLACE */
+
+.app-hero h1 {
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.app-hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.app-hero-desc {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* ========== STORE BADGES ========== */
+.store-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.store-badge:hover { transform: translateY(-2px); opacity: 0.9; }
+.store-badge svg { width: 20px; height: 20px; }
+
+.store-badge-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.store-badge-label {
+    font-size: 0.6rem;
+    font-weight: 400;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.store-badge-store { font-size: 0.9rem; font-weight: 600; }
+
+/* ========== SCREENSHOTS ========== */
+.screenshots {
+    position: relative;
+    padding: 4rem 0;
+}
+
+.screenshots-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 1rem max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem));
+}
+
+.screenshots-track::-webkit-scrollbar { display: none; }
+
+.screenshots-fade-left,
+.screenshots-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.screenshots-fade-left {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-secondary), transparent);
+}
+
+.screenshots-fade-right {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-secondary), transparent);
+}
+
+.screenshots-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.screenshots-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.screenshots-dot.is-active {
+    background: var(--accent);
+    transform: scale(1.25);
+}
+
+.screenshot-frame {
+    flex-shrink: 0;
+    width: 260px;
+    height: 520px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    overflow: hidden;
+    scroll-snap-align: center;
+    transition: var(--transition-theme);
+}
+
+.screenshot-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 🔁 REPLACE: Remove placeholder styles when using real screenshots */
+.screenshot-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+/* End REPLACE */
+
+@media (max-width: 479px) {
+    .screenshot-frame { width: 220px; height: 440px; }
+}
+
+/* ========== FEATURES ========== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.feature-card {
+    padding: 1.75rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--border-strong);
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.feature-icon svg { width: 20px; height: 20px; }
+
+.feature-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ========== SUPPORT ========== */
+.support-card {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    text-align: center;
+    transition: var(--transition-theme);
+}
+
+.support-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+.support-card p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65; }
+
+.support-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.support-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.support-link:hover { color: var(--accent); }
+.support-link svg { width: 16px; height: 16px; opacity: 0.6; }

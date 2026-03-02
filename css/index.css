@@ -1,0 +1,259 @@
+/* ========== HERO ========== */
+.hero {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--nav-height) + 2rem) 1.5rem 4rem;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: -30%;
+    background:
+        radial-gradient(ellipse at 20% 30%, var(--mesh-color-1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, var(--mesh-color-2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, var(--mesh-color-3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, var(--mesh-color-4) 0%, transparent 40%);
+    background-size: 200% 200%;
+    filter: blur(60px);
+    opacity: var(--hero-bg-opacity);
+    animation: meshMove 20s ease-in-out infinite;
+    pointer-events: none;
+    will-change: background-position;
+}
+
+@keyframes meshMove {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 50% 25%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 75%; }
+    100% { background-position: 0% 0%; }
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 700px;
+    z-index: 1;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: var(--radius-full);
+    background: var(--accent-dim);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ========== APPS / COMING SOON ========== */
+.coming-soon-card {
+    max-width: 480px;
+    margin: 3rem auto 0;
+    padding: 3rem 2rem;
+    border: 2px dashed var(--border-strong);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    background: var(--bg-card);
+    transition: var(--transition-theme);
+}
+
+.coming-soon-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.coming-soon-icon svg { width: 28px; height: 28px; color: var(--accent); }
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+}
+
+.coming-soon-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.coming-soon-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+}
+
+/* ========== ABOUT / VALUES ========== */
+.about-grid {
+    display: grid;
+    gap: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+.about-text p:last-child { margin-bottom: 0; }
+
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 479px) {
+    .values-grid { grid-template-columns: 1fr; }
+}
+
+.value-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--border-strong);
+}
+
+.value-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.value-icon svg { width: 20px; height: 20px; }
+
+.value-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+}
+
+.value-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* ========== CONTACT ========== */
+.contact-section { text-align: center; }
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.5rem 0 2rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover { color: var(--accent); }
+.contact-link svg { width: 18px; height: 18px; opacity: 0.6; }
+
+.social-links { display: flex; justify-content: center; gap: 0.75rem; }
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+    background: var(--accent-dim);
+    transform: translateY(-2px);
+}
+
+.social-btn svg { width: 18px; height: 18px; }
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; }
+    .coming-soon-icon { animation: none; }
+}

@@ -1,0 +1,92 @@
+/* ========== SECTIONS ========== */
+.section {
+    padding: 6rem 1.5rem;
+}
+
+.section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.section-alt {
+    background-color: var(--bg-secondary);
+    transition: var(--transition-theme);
+}
+
+.section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    line-height: 1.7;
+}
+
+.section-header {
+    margin-bottom: 3.5rem;
+}
+
+.section-header .section-subtitle {
+    margin: 0 auto;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-primary { background: var(--accent); color: #ffffff; }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
+
+.btn-ghost { color: var(--text-secondary); border: 1px solid var(--border-strong); background: transparent; }
+.btn-ghost:hover { color: var(--text-primary); border-color: var(--text-tertiary); background: var(--accent-dim); }
+
+.btn-outline { color: var(--accent); border: 1px solid var(--accent); background: transparent; }
+.btn-outline:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+.btn svg { width: 16px; height: 16px; }
+
+/* ========== SCROLL ANIMATIONS ========== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.animate-on-scroll.animate-in {
+    animation: fadeSlideUp 0.7s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll { opacity: 1; transform: none; }
+    .animate-on-scroll.animate-in { animation: none; }
+}
