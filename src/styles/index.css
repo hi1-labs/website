@@ -105,6 +105,7 @@
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 1.5rem;
+    overflow: hidden;
 }
 
 .apps-carousel .carousel-viewport {
@@ -113,10 +114,11 @@
 
 .apps-carousel-track {
     display: flex;
+    justify-content: center;
     gap: 1.25rem;
     transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
 }
 
 .app-card {
@@ -129,10 +131,18 @@
     text-align: center;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.35s ease, background-color 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+    opacity: 0.55;
+}
+
+.app-card.is-active {
+    opacity: 1;
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px var(--accent-glow);
 }
 
 .app-card:hover {
+    opacity: 1;
     transform: translateY(-4px);
     border-color: var(--accent);
     background: var(--bg-elevated);
@@ -185,15 +195,16 @@
 }
 
 .apps-carousel .carousel-arrow { top: 45%; }
-.apps-carousel .carousel-prev { left: -0.25rem; }
-.apps-carousel .carousel-next { right: -0.25rem; }
+.apps-carousel .carousel-prev { left: 0.5rem; }
+.apps-carousel .carousel-next { right: 0.5rem; }
 
 @media (max-width: 768px) {
     .apps-carousel .carousel-arrow { display: none; }
     .apps-carousel .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .apps-carousel .carousel-viewport::-webkit-scrollbar { display: none; }
     .apps-carousel-track { transition: none; }
-    .app-card { scroll-snap-align: center; }
+    .app-card { scroll-snap-align: center; opacity: 1; }
+    .app-card.is-active { box-shadow: none; border-color: var(--border); }
 }
 
 /* ========== VALUES ========== */

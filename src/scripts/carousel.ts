@@ -48,6 +48,12 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
     if (nextBtn) nextBtn.disabled = currentIndex === itemCount - 1;
   }
 
+  function updateActiveItem(): void {
+    items.forEach((item, i) => {
+      item.classList.toggle('is-active', i === currentIndex);
+    });
+  }
+
   function getSlideOffset(index: number): number {
     if (!items[index]) return 0;
     const viewportWidth = viewport!.offsetWidth;
@@ -63,6 +69,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
     currentIndex = index;
     updateDots();
     updateArrows();
+    updateActiveItem();
 
     if (isMobile()) {
       items[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
@@ -133,6 +140,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
       currentIndex = closestIndex;
       updateDots();
       updateArrows();
+      updateActiveItem();
     }, 60);
   }, { passive: true });
 
@@ -156,6 +164,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   });
 
   updateArrows();
+  updateActiveItem();
 }
 
 export { initCarousel };
