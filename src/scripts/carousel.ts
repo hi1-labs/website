@@ -9,7 +9,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   if (!carousel) return;
 
   const track = carousel.querySelector<HTMLElement>(trackSelector);
-  const viewport = carousel.querySelector<HTMLElement>('.carousel-viewport, .apps-carousel-viewport');
+  const viewport = carousel.querySelector<HTMLElement>('.carousel-viewport');
   const dotsContainer = carousel.querySelector<HTMLElement>('.carousel-dots');
   const prevBtn = carousel.querySelector<HTMLButtonElement>('.carousel-prev');
   const nextBtn = carousel.querySelector<HTMLButtonElement>('.carousel-next');

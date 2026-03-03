@@ -1,70 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Marquee from '../components/Marquee.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import StoreBadges from '../components/StoreBadges.astro';
-import FeatureCard from '../components/FeatureCard.astro';
-import '../styles/app.css';
-
-const navLinks = [
-  { label: 'All Apps', href: '/' },
-  { label: 'Features', href: '#features' },
-  { label: 'Support', href: '#support' },
-];
-
-const footerLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Privacy', href: '/privacy' },
-  { label: 'Terms', href: '/terms' },
-];
-
-const appMarqueeTags = [
-  'Privacy First',
-  'Fast & Lightweight',
-  'Works Offline',
-  'Dark Mode',
-  'No Ads',
-  'Beautiful UI',
-];
-
-const features = [
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-    title: 'Feature One',
-    description: 'A short description of what this feature does and why it matters to the user.',
-    delay: '0s',
-  },
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-    title: 'Privacy First',
-    description: 'Your data stays right on your device — private by design, always',
-    delay: '0.05s',
-  },
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-    title: 'Fast & Lightweight',
-    description: 'Snappy performance with a tiny footprint — just pure speed',
-    delay: '0.1s',
-  },
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
-    title: 'Dark Mode',
-    description: 'Beautiful in light or dark, following your system preference seamlessly',
-    delay: '0.15s',
-  },
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
-    title: 'Works Offline',
-    description: 'Full functionality even offline — your workflow, uninterrupted',
-    delay: '0.2s',
-  },
-  {
-    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-    title: 'No Ads, No Bloat',
-    description: 'A clean, focused experience — just the tool you need',
-    delay: '0.25s',
-  },
-];
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Marquee from '@components/Marquee.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import StoreBadges from '@components/StoreBadges.astro';
+import IconCard from '@components/IconCard.astro';
+import Carousel from '@components/Carousel.astro';
+import { appNavLinks, appFooterLinks } from '@data/navigation';
+import { appMarqueeTags, features } from '@data/app';
+import { SITE } from '@data/site';
+import { ICON_EMAIL, ICON_SHIELD, ICON_DOCUMENT } from '@data/icons';
+import '@styles/app.css';
 ---
 
 <BaseLayout
@@ -73,8 +18,8 @@ const features = [
   ogTitle="App Name — hi1 labs"
   ogDescription="A clear, one-sentence description of what your app does and why it matters."
   ogUrl="https://hi1labs.com/myapp/"
-  navLinks={navLinks}
-  footerLinks={footerLinks}
+  navLinks={appNavLinks}
+  footerLinks={appFooterLinks}
 >
   <!-- App Hero -->
   <section class="app-hero">
@@ -102,24 +47,18 @@ const features = [
     <div class="section-inner">
       <SectionHeader eyebrow="Preview" title="See it in action" />
     </div>
-    <div class="carousel" id="screenshots-carousel">
-      <button class="carousel-arrow carousel-prev" aria-label="Previous screenshot">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="carousel-arrow carousel-next" aria-label="Next screenshot">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <div class="carousel-viewport">
-        <div id="screenshots-track" class="carousel-track">
-          <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
-          <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>
-          <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 3</div></div>
-          <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 4</div></div>
-          <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 5</div></div>
-        </div>
-      </div>
-      <div id="screenshots-dots" class="carousel-dots" aria-label="Screenshot navigation"></div>
-    </div>
+    <Carousel
+      id="screenshots-carousel"
+      ariaLabel="Screenshot navigation"
+      prevLabel="Previous screenshot"
+      nextLabel="Next screenshot"
+    >
+      <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
+      <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>
+      <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 3</div></div>
+      <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 4</div></div>
+      <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 5</div></div>
+    </Carousel>
   </section>
 
   <!-- Features -->
@@ -132,11 +71,12 @@ const features = [
 
       <div class="features-grid">
         {features.map((feature) => (
-          <FeatureCard
+          <IconCard
             iconSvg={feature.iconSvg}
             title={feature.title}
             description={feature.description}
             delay={feature.delay}
+            variant="feature"
           />
         ))}
       </div>
@@ -151,27 +91,16 @@ const features = [
         <p>We're here for you — reach out and we'll get back to you as soon as we can</p>
 
         <div class="support-links">
-          <a href="mailto:support@hi1labs.com" class="support-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="M22 7l-10 7L2 7"/>
-            </svg>
-            support@hi1labs.com
+          <a href={`mailto:${SITE.supportEmail}`} class="support-link">
+            <Fragment set:html={ICON_EMAIL} />
+            {SITE.supportEmail}
           </a>
           <a href="/privacy" class="support-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
+            <Fragment set:html={ICON_SHIELD} />
             Privacy Policy
           </a>
           <a href="/terms" class="support-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>
+            <Fragment set:html={ICON_DOCUMENT} />
             Terms of Service
           </a>
         </div>

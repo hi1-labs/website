@@ -1,4 +1,6 @@
 ---
+import { SITE } from '@data/site';
+
 interface Props {
   links: { label: string; href: string }[];
 }
@@ -8,12 +10,12 @@ const { links } = Astro.props;
 
 <footer class="footer">
   <div class="footer-inner">
-    <a href="/" class="logo-mark" style="text-decoration: none;">h1</a>
+    <a href="/" class="logo-mark">h1</a>
     <nav class="footer-nav">
       {links.map((link) => (
         <a href={link.href}>{link.label}</a>
       ))}
     </nav>
-    <p class="footer-copy">&copy; 2026 hi1 labs. All rights reserved.</p>
+    <p class="footer-copy">&copy; {SITE.year} {SITE.name}. All rights reserved.</p>
   </div>
 </footer>

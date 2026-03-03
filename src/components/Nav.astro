@@ -1,5 +1,5 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
 
 interface Props {
   links: { label: string; href: string }[];
@@ -34,5 +34,4 @@ const { links, transparent = false } = Astro.props;
   </div>
 </nav>
 
-<script src="../scripts/mobile-menu.ts"></script>
-{transparent && <script src="../scripts/nav-scroll.ts"></script>}
+<script src="../scripts/nav.ts"></script>

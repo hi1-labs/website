@@ -1,4 +1,6 @@
 ---
+import { ICON_CHECKMARK } from '@data/icons';
+
 interface Props {
   tags: string[];
   class?: string;
@@ -6,17 +8,16 @@ interface Props {
 }
 
 const { tags, class: className, style } = Astro.props;
-const checkmarkSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 ---
 
 <div class={`marquee${className ? ` ${className}` : ''}`} style={style}>
   <div class="marquee-track">
     {tags.map((tag) => (
-      <span class="marquee-tag"><Fragment set:html={checkmarkSvg} />{tag}</span>
+      <span class="marquee-tag"><Fragment set:html={ICON_CHECKMARK} />{tag}</span>
     ))}
     {/* Duplicate for seamless loop */}
     {tags.map((tag) => (
-      <span class="marquee-tag"><Fragment set:html={checkmarkSvg} />{tag}</span>
+      <span class="marquee-tag"><Fragment set:html={ICON_CHECKMARK} />{tag}</span>
     ))}
   </div>
 </div>

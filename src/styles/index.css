@@ -33,18 +33,12 @@
     transform: scale(1.1);
 }
 
-/* Light theme (default): show light bg, hide dark bg */
+/* data-theme is always set by inline script — single selector is enough */
 .hero-bg-dark { display: none; }
 .hero-bg-light { display: block; }
 
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .hero-bg-dark { display: block; }
-    :root:not([data-theme="light"]) .hero-bg-light { display: none; }
-}
 :root[data-theme="dark"] .hero-bg-dark { display: block; }
 :root[data-theme="dark"] .hero-bg-light { display: none; }
-:root[data-theme="light"] .hero-bg-dark { display: none; }
-:root[data-theme="light"] .hero-bg-light { display: block; }
 
 .hero-content {
     position: relative;
@@ -79,7 +73,7 @@
 
 .hero-title em {
     font-style: normal;
-    background: linear-gradient(135deg, var(--accent), #a855f7);
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -113,7 +107,7 @@
     padding: 0 1.5rem;
 }
 
-.apps-carousel-viewport {
+.apps-carousel .carousel-viewport {
     overflow: hidden;
 }
 
@@ -156,7 +150,7 @@
 .app-card-icon-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--accent), #a855f7);
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,8 +190,8 @@
 
 @media (max-width: 768px) {
     .apps-carousel .carousel-arrow { display: none; }
-    .apps-carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .apps-carousel-viewport::-webkit-scrollbar { display: none; }
+    .apps-carousel .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .apps-carousel .carousel-viewport::-webkit-scrollbar { display: none; }
     .apps-carousel-track { transition: none; }
     .app-card { scroll-snap-align: center; }
 }
@@ -217,46 +211,7 @@
     .values-grid { grid-template-columns: 1fr; }
 }
 
-.value-card {
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
-}
-
-.value-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-card-hover);
-    border-color: var(--border-strong);
-}
-
-.value-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-md);
-    background: var(--accent-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    color: var(--accent);
-}
-
-.value-icon svg { width: 20px; height: 20px; }
-
-.value-card h3 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    color: var(--text-primary);
-}
-
-.value-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-}
+/* .icon-card styles are in components.css */
 
 /* ========== CONTACT ========== */
 .contact-section { text-align: center; }

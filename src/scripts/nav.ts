@@ -1,11 +1,22 @@
+import { SCROLL_THRESHOLD } from '../data/site';
+
+const nav = document.querySelector('.nav-transparent');
 const burger = document.getElementById('menu-toggle');
 const menu = document.getElementById('nav-menu');
-const nav = document.querySelector('.nav-transparent');
 
 function updateNav(): void {
   if (!nav) return;
-  nav.classList.toggle('nav-scrolled', window.scrollY > 16);
+  nav.classList.toggle('nav-scrolled', window.scrollY > SCROLL_THRESHOLD);
 }
+
+/* ---- Scroll behaviour (transparent nav only) ---- */
+
+if (nav) {
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+}
+
+/* ---- Mobile menu ---- */
 
 if (burger && menu) {
   burger.addEventListener('click', () => {

@@ -1,17 +1,15 @@
 ---
-import LegalLayout from '../layouts/LegalLayout.astro';
-
-const footerLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Privacy', href: '/privacy' },
-  { label: 'Contact', href: 'mailto:hello@hi1labs.com' },
-];
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { legalNavLinks, legalFooterLinks } from '@data/navigation';
+import '@styles/legal.css';
 ---
 
-<LegalLayout
+<BaseLayout
   title="Terms of Service — App Name — hi1 labs"
   description="Terms of Service for App Name by hi1 labs."
-  footerLinks={footerLinks}
+  navLinks={legalNavLinks}
+  footerLinks={legalFooterLinks}
+  variant="legal"
 >
   <header class="legal-header">
     <p class="legal-eyebrow">Legal</p>
@@ -59,4 +57,4 @@ const footerLinks = [
     <li>Email: <a href="mailto:hello@hi1labs.com">hello@hi1labs.com</a></li>
     <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
   </ul>
-</LegalLayout>
+</BaseLayout>

@@ -1,4 +1,5 @@
-const STORAGE_KEY = 'hi1-theme';
+import { THEME_STORAGE_KEY } from '../data/site';
+
 const root = document.documentElement;
 const toggle = document.getElementById('theme-toggle');
 
@@ -13,6 +14,6 @@ if (toggle) {
     const current = getCurrentTheme();
     const next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    localStorage.setItem(STORAGE_KEY, next);
+    localStorage.setItem(THEME_STORAGE_KEY, next);
   });
 }

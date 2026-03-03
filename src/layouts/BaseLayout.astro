@@ -1,8 +1,9 @@
 ---
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/common.css';
-import '../styles/components.css';
+import Nav from '@components/Nav.astro';
+import Footer from '@components/Footer.astro';
+import { FONTS_URL } from '@data/site';
+import '@styles/common.css';
+import '@styles/components.css';
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
   navLinks: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
   transparentNav?: boolean;
+  variant?: 'default' | 'legal';
 }
 
 const {
@@ -24,7 +26,10 @@ const {
   navLinks,
   footerLinks,
   transparentNav = false,
+  variant = 'default',
 } = Astro.props;
+
+const isLegal = variant === 'legal';
 ---
 
 <!doctype html>
@@ -42,21 +47,20 @@ const {
     <meta name="twitter:site" content="@hi1labs" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href={FONTS_URL} rel="stylesheet" />
     <script is:inline>
       (function () {
+        // SYNC: key must match THEME_STORAGE_KEY in src/data/site.ts
         var t = localStorage.getItem('hi1-theme');
-        if (t) document.documentElement.setAttribute('data-theme', t);
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
       })();
     </script>
     <slot name="head" />
   </head>
   <body>
     <Nav links={navLinks} transparent={transparentNav} />
-    <main>
+    <main class={isLegal ? 'legal' : undefined}>
       <slot />
     </main>
     <Footer links={footerLinks} />
