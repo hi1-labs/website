@@ -5,7 +5,7 @@ export default defineConfig({
   output: 'static',
   site: 'https://hi1labs.com',
   i18n: {
-    locales: ['en', 'ru', 'kk'],
+    locales: ['en', 'ru', 'kk', 'es', 'pt'],
     defaultLocale: 'en',
     routing: {
       prefixDefaultLocale: true,
@@ -20,6 +20,8 @@ export default defineConfig({
           en: 'en-US',
           ru: 'ru-RU',
           kk: 'kk-KZ',
+          es: 'es-ES',
+          pt: 'pt-BR',
         },
       },
     }),

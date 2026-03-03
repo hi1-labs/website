@@ -17,10 +17,20 @@ import { home as kkHome } from './kk/home';
 import { app as kkApp } from './kk/app';
 import { legal as kkLegal } from './kk/legal';
 
-const commonMap: Record<Locale, CommonTranslations> = { en: enCommon, ru: ruCommon, kk: kkCommon };
-const homeMap: Record<Locale, HomeTranslations> = { en: enHome, ru: ruHome, kk: kkHome };
-const appMap: Record<Locale, AppTranslations> = { en: enApp, ru: ruApp, kk: kkApp };
-const legalMap: Record<Locale, LegalTranslations> = { en: enLegal, ru: ruLegal, kk: kkLegal };
+import { common as esCommon } from './es/common';
+import { home as esHome } from './es/home';
+import { app as esApp } from './es/app';
+import { legal as esLegal } from './es/legal';
+
+import { common as ptCommon } from './pt/common';
+import { home as ptHome } from './pt/home';
+import { app as ptApp } from './pt/app';
+import { legal as ptLegal } from './pt/legal';
+
+const commonMap: Record<Locale, CommonTranslations> = { en: enCommon, ru: ruCommon, kk: kkCommon, es: esCommon, pt: ptCommon };
+const homeMap: Record<Locale, HomeTranslations> = { en: enHome, ru: ruHome, kk: kkHome, es: esHome, pt: ptHome };
+const appMap: Record<Locale, AppTranslations> = { en: enApp, ru: ruApp, kk: kkApp, es: esApp, pt: ptApp };
+const legalMap: Record<Locale, LegalTranslations> = { en: enLegal, ru: ruLegal, kk: kkLegal, es: esLegal, pt: ptLegal };
 
 export function getCommonTranslations(locale: Locale): CommonTranslations {
   return commonMap[locale];
@@ -59,6 +69,8 @@ const OG_LOCALE_MAP: Record<Locale, string> = {
   en: 'en_US',
   ru: 'ru_RU',
   kk: 'kk_KZ',
+  es: 'es_ES',
+  pt: 'pt_BR',
 };
 
 export function getOgLocale(locale: Locale): string {
