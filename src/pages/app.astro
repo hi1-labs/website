@@ -5,6 +5,7 @@ import SectionHeader from '@components/SectionHeader.astro';
 import StoreBadges from '@components/StoreBadges.astro';
 import IconCard from '@components/IconCard.astro';
 import Carousel from '@components/Carousel.astro';
+import DownloadBanner from '@components/DownloadBanner.astro';
 import { appNavLinks, appFooterLinks } from '@data/navigation';
 import { appMarqueeTags, features } from '@data/app';
 import { SITE } from '@data/site';
@@ -107,14 +108,23 @@ import '@styles/app.css';
       </div>
     </div>
   </section>
+
+  <DownloadBanner
+    appName="App Name"
+    appStoreUrl="https://apps.apple.com/app/idXXXXXXXXX"
+    googlePlayUrl="https://play.google.com/store/apps/details?id=com.hi1labs.myapp"
+  />
 </BaseLayout>
 
 <script>
   import { initCarousel } from '../scripts/carousel';
+  import { initDownloadBanner } from '../scripts/download-banner';
 
   initCarousel({
     carouselId: 'screenshots-carousel',
     trackSelector: '.carousel-track',
     itemSelector: '.screenshot-frame',
   });
+
+  initDownloadBanner();
 </script>

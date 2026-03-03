@@ -231,3 +231,55 @@
 
 .support-link:hover { color: var(--accent); }
 .support-link svg { width: 16px; height: 16px; opacity: 0.6; }
+
+/* ========== DOWNLOAD BANNER ========== */
+.download-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: var(--bg-nav);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-top: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.35s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.download-banner.is-visible { transform: translateY(0); }
+
+.download-banner-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.download-banner-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.download-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.download-banner-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.download-banner-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.download-banner-ios[hidden],
+.download-banner-android[hidden] { display: none; }
