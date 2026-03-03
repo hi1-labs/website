@@ -11,6 +11,25 @@ import { appMarqueeTags, features } from '@data/app';
 import { SITE } from '@data/site';
 import { ICON_EMAIL, ICON_SHIELD, ICON_DOCUMENT } from '@data/icons';
 import '@styles/app.css';
+
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'App Name',
+  description: 'A clear, one-sentence description of what your app does and why it matters.',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'iOS, Android',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  author: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
 ---
 
 <BaseLayout
@@ -22,6 +41,9 @@ import '@styles/app.css';
   navLinks={appNavLinks}
   footerLinks={appFooterLinks}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
+  </Fragment>
   <!-- App Hero -->
   <section class="app-hero">
     <div class="app-hero-content">

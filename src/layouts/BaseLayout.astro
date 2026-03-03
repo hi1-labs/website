@@ -1,7 +1,7 @@
 ---
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
-import { FONTS_URL, SITE } from '@data/site';
+import { FONTS_URL, SITE, SEO } from '@data/site';
 import '@styles/common.css';
 import '@styles/components.css';
 
@@ -33,6 +33,10 @@ const {
 
 const isLegal = variant === 'legal';
 const canonicalUrl = new URL(Astro.url.pathname, SITE.url).href;
+const resolvedOgTitle = ogTitle || title;
+const resolvedOgDescription = ogDescription || description;
+const resolvedOgUrl = ogUrl || canonicalUrl;
+const resolvedOgImage = ogImage || SEO.defaultOgImage;
 ---
 
 <!doctype html>
@@ -41,22 +45,29 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE.url).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content={SEO.themeColor} media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
+    <meta name="format-detection" content="telephone=no" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    {ogTitle && <meta property="og:title" content={ogTitle} />}
-    {ogDescription && <meta property="og:description" content={ogDescription} />}
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
-    {ogUrl && <meta property="og:url" content={ogUrl} />}
-    {ogImage && <meta property="og:image" content={ogImage} />}
-    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-    <meta name="twitter:site" content="@hi1labs" />
-    {ogTitle && <meta name="twitter:title" content={ogTitle} />}
-    {ogDescription && <meta name="twitter:description" content={ogDescription} />}
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta property="og:url" content={resolvedOgUrl} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={SEO.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={SEO.twitterHandle} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
+    <meta name="twitter:image" content={resolvedOgImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={FONTS_URL} rel="stylesheet" />

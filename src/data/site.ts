@@ -7,6 +7,13 @@ export const SITE = {
   year: new Date().getFullYear(),
 } as const;
 
+export const SEO = {
+  defaultOgImage: `${SITE.url}/og-default.png`,
+  twitterHandle: '@hi1labs',
+  locale: 'en_US',
+  themeColor: '#007AFF',
+} as const;
+
 export const SOCIAL_LINKS = {
   twitter: 'https://twitter.com/hi1labs',
   instagram: 'https://instagram.com/hi1labs',

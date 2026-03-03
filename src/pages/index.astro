@@ -9,7 +9,25 @@ import ContactLinks from '@components/ContactLinks.astro';
 import SocialLinks from '@components/SocialLinks.astro';
 import { mainNavLinks, mainFooterLinks } from '@data/navigation';
 import { heroMarqueeTags, apps, values, contactLinksData, socialLinksData } from '@data/home';
+import { SITE, SOCIAL_LINKS } from '@data/site';
 import '@styles/index.css';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/apple-touch-icon.png`,
+  email: SITE.email,
+  sameAs: [SOCIAL_LINKS.twitter, SOCIAL_LINKS.instagram],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+};
 ---
 
 <BaseLayout
@@ -22,6 +40,10 @@ import '@styles/index.css';
   footerLinks={mainFooterLinks}
   transparentNav={true}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </Fragment>
   <!-- Hero -->
   <section class="hero">
     <img class="hero-bg hero-bg-dark" src="/img/hero-bg.jpg" alt="" aria-hidden="true" />
