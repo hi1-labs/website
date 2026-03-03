@@ -119,7 +119,7 @@
 /* Mobile: hide badges until JS reveals the platform-specific one */
 @media (max-width: 768px) {
     .store-badges:not(.store-badges--ready) .store-badge { display: none; }
-    .store-badge.store-badge--visible { display: inline-flex; }
+    .store-badges:not(.store-badges--ready) .store-badge.store-badge--visible { display: inline-flex; }
 }
 
 /* ========== SCREENSHOTS CAROUSEL ========== */
