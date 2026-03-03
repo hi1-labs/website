@@ -27,6 +27,9 @@ function initDownloadBanner(): void {
 
   observer.observe(hero);
   banner.removeAttribute('hidden');
+
+  /* Reserve space so the footer isn't hidden behind the fixed banner */
+  document.body.style.paddingBottom = `${banner.offsetHeight}px`;
 }
 
 export { initDownloadBanner };
