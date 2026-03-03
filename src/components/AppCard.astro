@@ -1,6 +1,6 @@
 ---
 interface Props {
-  href: string;
+  href?: string;
   icon: string;
   title: string;
   tagline: string;
@@ -8,13 +8,16 @@ interface Props {
 }
 
 const { href, icon, title, tagline, badge } = Astro.props;
+const Tag = href ? 'a' : 'div';
+const linkProps = href ? { href } : {};
+const disabledClass = href ? '' : ' app-card--disabled';
 ---
 
-<a href={href} class="app-card">
+<Tag {...linkProps} class={`app-card${disabledClass}`}>
   <div class="app-card-icon">
     <div class="app-card-icon-placeholder">{icon}</div>
   </div>
   <h3>{title}</h3>
   <p>{tagline}</p>
-  {badge && <span class="app-card-badge">{badge}</span>}
-</a>
+  {badge && <span class={`app-card-badge${!href ? ' app-card-badge--dev' : ''}`}>{badge}</span>}
+</Tag>

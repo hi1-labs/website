@@ -194,6 +194,21 @@
     border-radius: var(--radius-full);
 }
 
+.app-card-badge--dev {
+    color: var(--text-tertiary);
+    background: var(--border);
+}
+
+.app-card--disabled {
+    cursor: default;
+}
+
+.app-card--disabled:hover {
+    transform: none;
+    border-color: var(--border);
+    background: var(--bg-card);
+}
+
 .apps-carousel .carousel-arrow { top: 45%; }
 
 @media (max-width: 768px) {

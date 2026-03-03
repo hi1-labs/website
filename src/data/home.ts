@@ -28,8 +28,8 @@ export const heroMarqueeTags = [
 export const apps = [
   { href: '/app', icon: '\u{1F3AF}', title: 'App One', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
   { href: '/app', icon: '\u2728', title: 'App Two', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
-  { href: '/app', icon: '\u{1F9E9}', title: 'App Three', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
-  { href: '/app', icon: '\u{1F52E}', title: 'App Four', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
+  { icon: '\u{1F9E9}', title: 'App Three', tagline: 'A short tagline describing what this app does.', badge: 'In Development' },
+  { icon: '\u{1F52E}', title: 'App Four', tagline: 'A short tagline describing what this app does.', badge: 'In Development' },
 ];
 
 /* ---- Values ---- */
