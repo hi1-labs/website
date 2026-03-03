@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { LOCALES, type Locale } from '@i18n/config';
+import { getCommonTranslations, getLegalTranslations } from '@i18n/utils';
+import { SITE } from '@data/site';
+import '@styles/legal.css';
+
+export const getStaticPaths: GetStaticPaths = () =>
+  LOCALES.map((lang) => ({ params: { lang } }));
+
+const lang = Astro.params.lang as Locale;
+const t = getCommonTranslations(lang);
+const legal = getLegalTranslations(lang);
+const terms = legal.terms;
+
+const navLinks = [
+  { label: t.nav.home, href: `/${lang}/` },
+];
+
+const footerLinks = [
+  { label: t.footer.home, href: `/${lang}/` },
+  { label: t.footer.privacy, href: `/${lang}/privacy` },
+  { label: t.footer.terms, href: `/${lang}/terms` },
+  { label: t.footer.contact, href: `mailto:${SITE.email}` },
+];
+---
+
+<BaseLayout
+  title={terms.meta.title}
+  description={terms.meta.description}
+  lang={lang}
+  ogTitle={terms.meta.ogTitle}
+  ogDescription={terms.meta.ogDescription}
+  ogUrl={`${SITE.url}/${lang}/terms`}
+  navLinks={navLinks}
+  footerLinks={footerLinks}
+  footerAllRightsReserved={t.footer.allRightsReserved}
+  variant="legal"
+  skipToContent={t.skipToContent}
+  themeToggleLabel={t.theme.toggleLabel}
+  langSwitcherLabel={t.langSwitcher.switchTo}
+>
+  <header class="legal-header">
+    <p class="legal-eyebrow">{terms.header.eyebrow}</p>
+    <h1>{terms.header.title}</h1>
+    <p class="legal-meta">{terms.header.lastUpdated}</p>
+  </header>
+
+  <Fragment set:html={terms.contentHtml} />
+</BaseLayout>

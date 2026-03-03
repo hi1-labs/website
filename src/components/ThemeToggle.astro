@@ -1,7 +1,12 @@
 ---
+interface Props {
+  label?: string;
+}
+
+const { label = 'Toggle theme' } = Astro.props;
 ---
 
-<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+<button id="theme-toggle" class="theme-toggle" aria-label={label}>
   <svg
     class="icon-sun"
     viewBox="0 0 24 24"

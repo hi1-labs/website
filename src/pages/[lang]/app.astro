@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from 'astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Marquee from '@components/Marquee.astro';
 import SectionHeader from '@components/SectionHeader.astro';
@@ -6,17 +7,38 @@ import StoreBadges from '@components/StoreBadges.astro';
 import IconCard from '@components/IconCard.astro';
 import Carousel from '@components/Carousel.astro';
 import DownloadBanner from '@components/DownloadBanner.astro';
-import { appNavLinks, appFooterLinks } from '@data/navigation';
-import { appMarqueeTags, features } from '@data/app';
+import { LOCALES, type Locale } from '@i18n/config';
+import { getCommonTranslations, getAppTranslations } from '@i18n/utils';
 import { SITE } from '@data/site';
-import { ICON_EMAIL, ICON_SHIELD, ICON_DOCUMENT } from '@data/icons';
+import { ICON_EMAIL, ICON_SHIELD, ICON_DOCUMENT, ICON_STAR, ICON_LIGHTNING, ICON_MOON, ICON_PHONE, ICON_HEART } from '@data/icons';
 import '@styles/app.css';
+
+export const getStaticPaths: GetStaticPaths = () =>
+  LOCALES.map((lang) => ({ params: { lang } }));
+
+const lang = Astro.params.lang as Locale;
+const t = getCommonTranslations(lang);
+const appT = getAppTranslations(lang);
+
+const navLinks = [
+  { label: t.nav.allApps, href: `/${lang}/` },
+  { label: t.nav.features, href: '#features' },
+  { label: t.nav.support, href: '#support' },
+];
+
+const footerLinks = [
+  { label: t.footer.home, href: `/${lang}/` },
+  { label: t.footer.privacy, href: `/${lang}/privacy` },
+  { label: t.footer.terms, href: `/${lang}/terms` },
+];
+
+const featureIcons = [ICON_STAR, ICON_SHIELD, ICON_LIGHTNING, ICON_MOON, ICON_PHONE, ICON_HEART];
 
 const softwareAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'App Name',
-  description: 'A clear, one-sentence description of what your app does and why it matters.',
+  name: appT.schema.name,
+  description: appT.schema.description,
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'iOS, Android',
   offers: {
@@ -33,13 +55,18 @@ const softwareAppSchema = {
 ---
 
 <BaseLayout
-  title="App Name — hi1 labs"
-  description="A clear, one-sentence description of what your app does and why it matters."
-  ogTitle="App Name — hi1 labs"
-  ogDescription="A clear, one-sentence description of what your app does and why it matters."
-  ogUrl="https://hi1labs.com/myapp/"
-  navLinks={appNavLinks}
-  footerLinks={appFooterLinks}
+  title={appT.meta.title}
+  description={appT.meta.description}
+  lang={lang}
+  ogTitle={appT.meta.ogTitle}
+  ogDescription={appT.meta.ogDescription}
+  ogUrl={`${SITE.url}/${lang}/app`}
+  navLinks={navLinks}
+  footerLinks={footerLinks}
+  footerAllRightsReserved={t.footer.allRightsReserved}
+  skipToContent={t.skipToContent}
+  themeToggleLabel={t.theme.toggleLabel}
+  langSwitcherLabel={t.langSwitcher.switchTo}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
@@ -51,24 +78,28 @@ const softwareAppSchema = {
         <div class="app-icon-placeholder">🎯</div>
       </div>
 
-      <h1 class="animate-on-scroll" style="--delay: 0.1s">Your app <em>tagline</em> here</h1>
+      <h1 class="animate-on-scroll" style="--delay: 0.1s">{appT.hero.tagline} <em>{appT.hero.taglineEmphasis}</em> here</h1>
       <p class="app-hero-desc animate-on-scroll" style="--delay: 0.15s">
-        A clear, one-sentence description of what your app does and why people will love it.
+        {appT.hero.description}
       </p>
 
       <StoreBadges
         appStoreUrl="https://apps.apple.com/app/idXXXXXXXXX"
         googlePlayUrl="https://play.google.com/store/apps/details?id=com.hi1labs.myapp"
+        appStoreLabel={t.storeBadges.appStoreLabel}
+        appStoreName={t.storeBadges.appStoreName}
+        googlePlayLabel={t.storeBadges.googlePlayLabel}
+        googlePlayName={t.storeBadges.googlePlayName}
       />
 
-      <Marquee tags={appMarqueeTags} class="animate-on-scroll" style="--delay: 0.25s" />
+      <Marquee tags={appT.marqueeTags} class="animate-on-scroll" style="--delay: 0.25s" />
     </div>
   </section>
 
   <!-- Screenshots -->
   <section class="screenshots section-alt">
     <div class="section-inner">
-      <SectionHeader eyebrow="Preview" title="See it in action" />
+      <SectionHeader eyebrow={appT.screenshots.eyebrow} title={appT.screenshots.title} />
     </div>
     <Carousel
       id="screenshots-carousel"
@@ -88,17 +119,17 @@ const softwareAppSchema = {
   <section class="section" id="features">
     <div class="section-inner">
       <SectionHeader
-        eyebrow="Features"
-        title="Everything you need, nothing you don't"
+        eyebrow={appT.features.eyebrow}
+        title={appT.features.title}
       />
 
       <div class="features-grid">
-        {features.map((feature) => (
+        {appT.featureItems.map((feature, i) => (
           <IconCard
-            iconSvg={feature.iconSvg}
+            iconSvg={featureIcons[i]}
             title={feature.title}
             description={feature.description}
-            delay={feature.delay}
+            delay={`${i * 0.05}s`}
             variant="feature"
           />
         ))}
@@ -110,21 +141,21 @@ const softwareAppSchema = {
   <section class="section section-alt" id="support">
     <div class="section-inner">
       <div class="support-card animate-on-scroll">
-        <h3>Need help?</h3>
-        <p>We're here for you — reach out and we'll get back to you as soon as we can</p>
+        <h3>{appT.support.title}</h3>
+        <p>{appT.support.description}</p>
 
         <div class="support-links">
           <a href={`mailto:${SITE.supportEmail}`} class="support-link">
             <Fragment set:html={ICON_EMAIL} />
             {SITE.supportEmail}
           </a>
-          <a href="/privacy" class="support-link">
+          <a href={`/${lang}/privacy`} class="support-link">
             <Fragment set:html={ICON_SHIELD} />
-            Privacy Policy
+            {appT.support.privacyPolicy}
           </a>
-          <a href="/terms" class="support-link">
+          <a href={`/${lang}/terms`} class="support-link">
             <Fragment set:html={ICON_DOCUMENT} />
-            Terms of Service
+            {appT.support.termsOfService}
           </a>
         </div>
       </div>
@@ -132,16 +163,16 @@ const softwareAppSchema = {
   </section>
 
   <DownloadBanner
-    appName="App Name"
+    appName={appT.downloadBanner.appName}
     appStoreUrl="https://apps.apple.com/app/idXXXXXXXXX"
     googlePlayUrl="https://play.google.com/store/apps/details?id=com.hi1labs.myapp"
   />
 </BaseLayout>
 
 <script>
-  import { initCarousel } from '../scripts/carousel';
-  import { initDownloadBanner } from '../scripts/download-banner';
-  import { initStoreBadges } from '../scripts/store-badges';
+  import { initCarousel } from '@scripts/carousel';
+  import { initDownloadBanner } from '@scripts/download-banner';
+  import { initStoreBadges } from '@scripts/store-badges';
 
   initCarousel({
     carouselId: 'screenshots-carousel',

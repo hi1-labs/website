@@ -1,16 +1,36 @@
 ---
 import ThemeToggle from '@components/ThemeToggle.astro';
+import type { Locale } from '@i18n/config';
+import { getLocalizedPath, getOtherLocales } from '@i18n/utils';
 
 interface Props {
   links: { label: string; href: string }[];
   transparent?: boolean;
+  lang: Locale;
+  themeToggleLabel?: string;
+  langSwitcherLabel?: string;
 }
 
-const { links, transparent = false } = Astro.props;
+const {
+  links,
+  transparent = false,
+  lang,
+  themeToggleLabel = 'Toggle theme',
+  langSwitcherLabel = 'Change language',
+} = Astro.props;
+
+const otherLocales = getOtherLocales(lang);
+const langConfig: Record<Locale, { flag: string; label: string }> = {
+  en: { flag: '🇺🇸', label: 'EN' },
+  ru: { flag: '🇷🇺', label: 'RU' },
+  kk: { flag: '🇰🇿', label: 'KK' },
+};
+const currentLangConfig = langConfig[lang];
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class={`nav${transparent ? ' nav-transparent' : ''}`}>
-  <a href="/" class="nav-logo" aria-label="hi1 labs home">
+  <a href={`/${lang}/`} class="nav-logo" aria-label="hi1 labs home">
     <span class="logo-mark">h1</span>
   </a>
 
@@ -21,7 +41,21 @@ const { links, transparent = false } = Astro.props;
   </div>
 
   <div class="nav-actions">
-    <ThemeToggle />
+    <details class="lang-dropdown">
+      <summary class="lang-switch" aria-label={langSwitcherLabel}>
+        <span class="lang-flag">{currentLangConfig.flag}</span>
+        <span class="lang-label">{currentLangConfig.label}</span>
+      </summary>
+      <div class="lang-dropdown-menu">
+        {otherLocales.map((locale) => (
+          <a href={getLocalizedPath(currentPath, locale)} class="lang-dropdown-item">
+            <span class="lang-flag">{langConfig[locale].flag}</span>
+            <span class="lang-label">{langConfig[locale].label}</span>
+          </a>
+        ))}
+      </div>
+    </details>
+    <ThemeToggle label={themeToggleLabel} />
     <button
       id="menu-toggle"
       class="nav-burger"

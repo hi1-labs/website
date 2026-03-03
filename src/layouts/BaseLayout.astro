@@ -1,46 +1,64 @@
 ---
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
-import { FONTS_URL, SITE, SEO } from '@data/site';
+import { FONTS_URL, SITE, SEO, CF_ANALYTICS_TOKEN } from '@data/site';
+import type { Locale } from '@i18n/config';
+import { LOCALES } from '@i18n/config';
+import { getOtherLocales, getOgLocale } from '@i18n/utils';
 import '@styles/common.css';
 import '@styles/components.css';
 
 interface Props {
   title: string;
   description: string;
+  lang: Locale;
   ogTitle?: string;
   ogDescription?: string;
   ogUrl?: string;
   ogImage?: string;
   navLinks: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
+  footerAllRightsReserved: string;
   transparentNav?: boolean;
   variant?: 'default' | 'legal';
+  skipToContent?: string;
+  themeToggleLabel?: string;
+  langSwitcherLabel?: string;
 }
 
 const {
   title,
   description,
+  lang,
   ogTitle,
   ogDescription,
   ogUrl,
   ogImage,
   navLinks,
   footerLinks,
+  footerAllRightsReserved,
   transparentNav = false,
   variant = 'default',
+  skipToContent = 'Skip to main content',
+  themeToggleLabel = 'Toggle theme',
+  langSwitcherLabel = 'Switch language',
 } = Astro.props;
 
 const isLegal = variant === 'legal';
-const canonicalUrl = new URL(Astro.url.pathname, SITE.url).href;
+const localePattern = LOCALES.join('|');
+const localeRegex = new RegExp(`^\\/(${localePattern})`);
+const pagePath = Astro.url.pathname.replace(localeRegex, '');
+const canonicalUrl = new URL(`/${lang}${pagePath || '/'}`, SITE.url).href;
 const resolvedOgTitle = ogTitle || title;
 const resolvedOgDescription = ogDescription || description;
 const resolvedOgUrl = ogUrl || canonicalUrl;
 const resolvedOgImage = ogImage || SEO.defaultOgImage;
+const ogLocale = getOgLocale(lang);
+const otherLocales = getOtherLocales(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,6 +67,10 @@ const resolvedOgImage = ogImage || SEO.defaultOgImage;
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {LOCALES.map((locale) => (
+      <link rel="alternate" hreflang={locale} href={new URL(`/${locale}${pagePath || '/'}`, SITE.url).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(`/en${pagePath || '/'}`, SITE.url).href} />
     <meta name="theme-color" content={SEO.themeColor} media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
@@ -63,7 +85,7 @@ const resolvedOgImage = ogImage || SEO.defaultOgImage;
     <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content={SEO.locale} />
+    <meta property="og:locale" content={ogLocale} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={SEO.twitterHandle} />
     <meta name="twitter:title" content={resolvedOgTitle} />
@@ -83,11 +105,19 @@ const resolvedOgImage = ogImage || SEO.defaultOgImage;
     <slot name="head" />
   </head>
   <body>
-    <Nav links={navLinks} transparent={transparentNav} />
-    <main class={isLegal ? 'legal' : undefined}>
+    <a href="#main-content" class="skip-link">{skipToContent}</a>
+    <Nav
+      links={navLinks}
+      transparent={transparentNav}
+      lang={lang}
+      themeToggleLabel={themeToggleLabel}
+      langSwitcherLabel={langSwitcherLabel}
+    />
+    <main id="main-content" class={isLegal ? 'legal' : undefined}>
       <slot />
     </main>
-    <Footer links={footerLinks} />
+    <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} />
     <script src="../scripts/animations.ts"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token":"${CF_ANALYTICS_TOKEN}"}`}></script>
   </body>
 </html>

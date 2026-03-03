@@ -1,0 +1,193 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Marquee from '@components/Marquee.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import AppCard from '@components/AppCard.astro';
+import IconCard from '@components/IconCard.astro';
+import Carousel from '@components/Carousel.astro';
+import ContactLinks from '@components/ContactLinks.astro';
+import SocialLinks from '@components/SocialLinks.astro';
+import { LOCALES, type Locale } from '@i18n/config';
+import { getCommonTranslations, getHomeTranslations } from '@i18n/utils';
+import { SITE, SOCIAL_LINKS } from '@data/site';
+import {
+  ICON_SHIELD,
+  ICON_STAR,
+  ICON_HEART,
+  ICON_PHONE,
+  ICON_EMAIL,
+  ICON_QUESTION,
+  ICON_TWITTER,
+  ICON_INSTAGRAM,
+} from '@data/icons';
+import '@styles/index.css';
+
+export const getStaticPaths: GetStaticPaths = () =>
+  LOCALES.map((lang) => ({ params: { lang } }));
+
+const lang = Astro.params.lang as Locale;
+const t = getCommonTranslations(lang);
+const home = getHomeTranslations(lang);
+
+const navLinks = [
+  { label: t.nav.apps, href: '#apps' },
+  { label: t.nav.about, href: '#about' },
+  { label: t.nav.contact, href: '#contact' },
+];
+
+const footerLinks = [
+  { label: t.footer.privacy, href: `/${lang}/privacy` },
+  { label: t.footer.terms, href: `/${lang}/terms` },
+  { label: t.footer.contact, href: `mailto:${SITE.email}` },
+];
+
+const valueIcons = [ICON_SHIELD, ICON_STAR, ICON_HEART, ICON_PHONE];
+const appIcons = ['🎯', '✨', '🧩', '🔮'];
+const appHrefs = [`/${lang}/app`, `/${lang}/app`, undefined, undefined];
+
+const contactLinksData = [
+  { iconSvg: ICON_EMAIL, href: `mailto:${SITE.email}`, label: SITE.email },
+  { iconSvg: ICON_QUESTION, href: `mailto:${SITE.supportEmail}`, label: SITE.supportEmail },
+];
+
+const socialLinksData = [
+  { iconSvg: ICON_TWITTER, href: SOCIAL_LINKS.twitter, ariaLabel: home.social.twitter },
+  { iconSvg: ICON_INSTAGRAM, href: SOCIAL_LINKS.instagram, ariaLabel: home.social.instagram },
+];
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/apple-touch-icon.png`,
+  email: SITE.email,
+  sameAs: [SOCIAL_LINKS.twitter, SOCIAL_LINKS.instagram],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+};
+---
+
+<BaseLayout
+  title={home.meta.title}
+  description={home.meta.description}
+  lang={lang}
+  ogTitle={home.meta.ogTitle}
+  ogDescription={home.meta.ogDescription}
+  ogUrl={`${SITE.url}/${lang}/`}
+  navLinks={navLinks}
+  footerLinks={footerLinks}
+  footerAllRightsReserved={t.footer.allRightsReserved}
+  transparentNav={true}
+  skipToContent={t.skipToContent}
+  themeToggleLabel={t.theme.toggleLabel}
+  langSwitcherLabel={t.langSwitcher.switchTo}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </Fragment>
+  <!-- Hero -->
+  <section class="hero">
+    <img class="hero-bg hero-bg-dark" src="/background/hero-bg.jpg" alt="" aria-hidden="true" />
+    <img class="hero-bg hero-bg-light" src="/background/hero-bg-light.jpg" alt="" aria-hidden="true" />
+    <div class="hero-content">
+      <p class="hero-eyebrow animate-on-scroll">{home.hero.eyebrow}</p>
+      <h1 class="hero-title animate-on-scroll" style="--delay: 0.1s">
+        {home.hero.titleLine1}<br />{home.hero.titleConnector}<em>{home.hero.titleEmphasis}</em>
+      </h1>
+      <p class="hero-subtitle animate-on-scroll" style="--delay: 0.2s">
+        {home.hero.subtitle}
+      </p>
+      <div class="hero-actions animate-on-scroll" style="--delay: 0.3s">
+        <a href="#apps" class="btn btn-primary">{home.hero.ctaExplore}</a>
+        <a href="#contact" class="btn btn-ghost">{home.hero.ctaHello}</a>
+      </div>
+
+      <Marquee tags={home.marqueeTags} class="animate-on-scroll" style="--delay: 0.4s" />
+    </div>
+  </section>
+
+  <!-- Apps -->
+  <section class="section section-alt" id="apps">
+    <div class="section-inner">
+      <SectionHeader
+        eyebrow={home.apps.eyebrow}
+        title={home.apps.title}
+        subtitle={home.apps.subtitle}
+      />
+    </div>
+    <Carousel
+      id="apps-carousel"
+      ariaLabel="App navigation"
+      prevLabel="Previous app"
+      nextLabel="Next app"
+      trackClass="apps-carousel-track"
+      class="apps-carousel"
+    >
+      {home.appCards.map((card, i) => (
+        <AppCard
+          href={appHrefs[i]}
+          icon={appIcons[i]}
+          title={card.title}
+          tagline={card.tagline}
+          badge={card.badge}
+        />
+      ))}
+    </Carousel>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <SectionHeader
+        eyebrow={home.about.eyebrow}
+        title={home.about.title}
+        subtitle={home.about.subtitle}
+      />
+
+      <div class="values-grid">
+        {home.values.map((value, i) => (
+          <IconCard
+            iconSvg={valueIcons[i]}
+            title={value.title}
+            description={value.description}
+            delay={`${0.1 + i * 0.05}s`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="section-inner contact-section">
+      <p class="section-eyebrow animate-on-scroll">{home.contact.eyebrow}</p>
+      <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">
+        {home.contact.title}
+      </h2>
+      <p class="section-subtitle animate-on-scroll" style="--delay: 0.1s; margin: 0 auto">
+        {home.contact.subtitle}
+      </p>
+
+      <ContactLinks links={contactLinksData} />
+      <SocialLinks links={socialLinksData} />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { initCarousel } from '@scripts/carousel';
+
+  initCarousel({
+    carouselId: 'apps-carousel',
+    trackSelector: '.apps-carousel-track',
+    itemSelector: '.app-card',
+  });
+</script>

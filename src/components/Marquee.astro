@@ -10,7 +10,7 @@ interface Props {
 const { tags, class: className, style } = Astro.props;
 ---
 
-<div class={`marquee${className ? ` ${className}` : ''}`} style={style}>
+<div class={`marquee${className ? ` ${className}` : ''}`} style={style} aria-hidden="true">
   <div class="marquee-track">
     {tags.map((tag) => (
       <span class="marquee-tag"><Fragment set:html={ICON_CHECKMARK} />{tag}</span>

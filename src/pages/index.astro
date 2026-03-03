@@ -1,146 +1,24 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Marquee from '@components/Marquee.astro';
-import SectionHeader from '@components/SectionHeader.astro';
-import AppCard from '@components/AppCard.astro';
-import IconCard from '@components/IconCard.astro';
-import Carousel from '@components/Carousel.astro';
-import ContactLinks from '@components/ContactLinks.astro';
-import SocialLinks from '@components/SocialLinks.astro';
-import { mainNavLinks, mainFooterLinks } from '@data/navigation';
-import { heroMarqueeTags, apps, values, contactLinksData, socialLinksData } from '@data/home';
-import { SITE, SOCIAL_LINKS } from '@data/site';
-import '@styles/index.css';
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE.name,
-  url: SITE.url,
-  logo: `${SITE.url}/apple-touch-icon.png`,
-  email: SITE.email,
-  sameAs: [SOCIAL_LINKS.twitter, SOCIAL_LINKS.instagram],
-};
-
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
-  url: SITE.url,
-};
+// Root page: language selection fallback.
+// On Cloudflare Pages, the edge Function (functions/index.ts) handles
+// Accept-Language detection and redirects before this page is served.
+// This page only appears in local dev or non-CF environments.
 ---
-
-<BaseLayout
-  title="hi1 labs — Independent App Studio"
-  description="hi1 labs — an independent studio crafting thoughtful mobile experiences with simplicity, beauty, and care"
-  ogTitle="hi1 labs — Independent App Studio"
-  ogDescription="Thoughtful mobile experiences crafted with care, simplicity, and respect for your time"
-  ogUrl="https://hi1labs.com"
-  navLinks={mainNavLinks}
-  footerLinks={mainFooterLinks}
-  transparentNav={true}
->
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-  </Fragment>
-  <!-- Hero -->
-  <section class="hero">
-    <img class="hero-bg hero-bg-dark" src="/background/hero-bg.jpg" alt="" aria-hidden="true" />
-    <img class="hero-bg hero-bg-light" src="/background/hero-bg-light.jpg" alt="" aria-hidden="true" />
-    <div class="hero-content">
-      <p class="hero-eyebrow animate-on-scroll">Independent App Studio</p>
-      <h1 class="hero-title animate-on-scroll" style="--delay: 0.1s">
-        Apps that feel<br />like <em>magic</em>
-      </h1>
-      <p class="hero-subtitle animate-on-scroll" style="--delay: 0.2s">
-        Thoughtful mobile experiences — crafted with care, simplicity, and
-        genuine respect for your time
-      </p>
-      <div class="hero-actions animate-on-scroll" style="--delay: 0.3s">
-        <a href="#apps" class="btn btn-primary">Explore Our Apps</a>
-        <a href="#contact" class="btn btn-ghost">Say Hello</a>
-      </div>
-
-      <Marquee tags={heroMarqueeTags} class="animate-on-scroll" style="--delay: 0.4s" />
-    </div>
-  </section>
-
-  <!-- Apps -->
-  <section class="section section-alt" id="apps">
-    <div class="section-inner">
-      <SectionHeader
-        eyebrow="Our Apps"
-        title="Something wonderful is brewing"
-        subtitle="We're putting the finishing touches on our first release — follow along and be the first to know"
-      />
-    </div>
-    <Carousel
-      id="apps-carousel"
-      ariaLabel="App navigation"
-      prevLabel="Previous app"
-      nextLabel="Next app"
-      trackClass="apps-carousel-track"
-      class="apps-carousel"
-    >
-      {apps.map((app) => (
-        <AppCard
-          href={app.href}
-          icon={app.icon}
-          title={app.title}
-          tagline={app.tagline}
-          badge={app.badge}
-        />
-      ))}
-    </Carousel>
-  </section>
-
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="section-inner">
-      <SectionHeader
-        eyebrow="About"
-        title="Made with heart, built for you"
-        subtitle="hi1 labs is an independent studio on a simple mission — creating mobile apps that truly respect your time, your privacy, and your intelligence. One tool, one purpose, done exceptionally well"
-      />
-
-      <div class="values-grid">
-        {values.map((value) => (
-          <IconCard
-            iconSvg={value.iconSvg}
-            title={value.title}
-            description={value.description}
-            delay={value.delay}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="section section-alt" id="contact">
-    <div class="section-inner contact-section">
-      <p class="section-eyebrow animate-on-scroll">Contact</p>
-      <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">
-        Let's connect
-      </h2>
-      <p class="section-subtitle animate-on-scroll" style="--delay: 0.1s; margin: 0 auto">
-        Have an idea, some feedback, or just want to say hello? We'd
-        genuinely love to hear from you
-      </p>
-
-      <ContactLinks links={contactLinksData} />
-      <SocialLinks links={socialLinksData} />
-    </div>
-  </section>
-</BaseLayout>
-
-<script>
-  import { initCarousel } from '../scripts/carousel';
-
-  initCarousel({
-    carouselId: 'apps-carousel',
-    trackSelector: '.apps-carousel-track',
-    itemSelector: '.app-card',
-  });
-</script>
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hi1 labs</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; gap: 2rem; margin: 0; background: #000; color: #fff; }
+    a { color: #0A84FF; font-size: 1.25rem; text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
+    a:hover { background: rgba(10,132,255,0.1); }
+  </style>
+</head>
+<body>
+  <a href="/en/">🇺🇸 English</a>
+  <a href="/ru/">🇷🇺 Русский</a>
+  <a href="/kk/">🇰🇿 Қазақша</a>
+</body>
+</html>

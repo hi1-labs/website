@@ -11,11 +11,12 @@ const { href, icon, title, tagline, badge } = Astro.props;
 const Tag = href ? 'a' : 'div';
 const linkProps = href ? { href } : {};
 const disabledClass = href ? '' : ' app-card--disabled';
+const disabledAttrs = href ? {} : { 'aria-disabled': 'true' };
 ---
 
-<Tag {...linkProps} class={`app-card${disabledClass}`}>
+<Tag {...linkProps} {...disabledAttrs} class={`app-card${disabledClass}`}>
   <div class="app-card-icon">
-    <div class="app-card-icon-placeholder">{icon}</div>
+    <div class="app-card-icon-placeholder" aria-hidden="true">{icon}</div>
   </div>
   <h3>{title}</h3>
   <p>{tagline}</p>
