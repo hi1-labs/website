@@ -159,7 +159,11 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      if (!isMobile()) goToSlide(currentIndex);
+      if (isMobile()) {
+        track!.style.transform = '';
+      } else {
+        goToSlide(currentIndex);
+      }
     }, 150);
   });
 

@@ -175,23 +175,24 @@
 }
 /* End REPLACE */
 
-@media (max-width: 479px) {
-    .screenshot-frame { width: 220px; height: 440px; }
-}
-
 @media (max-width: 768px) {
     .carousel-arrow { display: none; }
     .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .carousel-viewport::-webkit-scrollbar { display: none; }
-    .carousel-track { transition: none; }
+    .carousel-track { transition: none; padding: 1rem calc(50% - 130px); }
     .screenshot-frame { scroll-snap-align: center; opacity: 1; }
     .screenshot-frame.is-active { transform: none; box-shadow: none; border-color: var(--border); }
+}
+
+@media (max-width: 479px) {
+    .screenshot-frame { width: 220px; height: 440px; }
+    .carousel-track { padding: 1rem calc(50% - 110px); }
 }
 
 /* ========== FEATURES ========== */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
     gap: 1rem;
 }
 
