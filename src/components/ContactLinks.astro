@@ -1,0 +1,22 @@
+---
+interface LinkItem {
+  iconSvg: string;
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links: LinkItem[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="contact-links animate-on-scroll" style="--delay: 0.15s">
+  {links.map((link) => (
+    <a href={link.href} class="contact-link">
+      <Fragment set:html={link.iconSvg} />
+      {link.label}
+    </a>
+  ))}
+</div>

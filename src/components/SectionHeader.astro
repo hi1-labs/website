@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { eyebrow, title, subtitle } = Astro.props;
+---
+
+<div class="section-header">
+  <p class="section-eyebrow animate-on-scroll">{eyebrow}</p>
+  <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">
+    {title}
+  </h2>
+  {subtitle && (
+    <p class="section-subtitle animate-on-scroll" style="--delay: 0.1s">
+      {subtitle}
+    </p>
+  )}
+</div>

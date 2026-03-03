@@ -1,0 +1,29 @@
+---
+interface Props {
+  id: string;
+  ariaLabel: string;
+  prevLabel?: string;
+  nextLabel?: string;
+}
+
+const { id, ariaLabel, prevLabel = 'Previous', nextLabel = 'Next' } = Astro.props;
+---
+
+<div class="carousel" id={id}>
+  <button class="carousel-arrow carousel-prev" aria-label={prevLabel}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  </button>
+  <button class="carousel-arrow carousel-next" aria-label={nextLabel}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  </button>
+  <div class="carousel-viewport">
+    <div class="carousel-track">
+      <slot />
+    </div>
+  </div>
+  <div class="carousel-dots" aria-label={ariaLabel}></div>
+</div>

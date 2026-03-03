@@ -1,0 +1,27 @@
+---
+interface SocialItem {
+  iconSvg: string;
+  href: string;
+  ariaLabel: string;
+}
+
+interface Props {
+  links: SocialItem[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="social-links animate-on-scroll" style="--delay: 0.2s">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener"
+      class="social-btn"
+      aria-label={link.ariaLabel}
+    >
+      <Fragment set:html={link.iconSvg} />
+    </a>
+  ))}
+</div>

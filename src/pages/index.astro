@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Marquee from '../components/Marquee.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import AppCard from '../components/AppCard.astro';
+import ValueCard from '../components/ValueCard.astro';
+import ContactLinks from '../components/ContactLinks.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import '../styles/index.css';
+
+const navLinks = [
+  { label: 'Apps', href: '#apps' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const footerLinks = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Contact', href: 'mailto:hello@hi1labs.com' },
+];
+
+const heroMarqueeTags = [
+  'Privacy First',
+  'Cross-Platform',
+  'No Ads',
+  'Made with Love',
+  'Quality Over Quantity',
+  'Honest Software',
+  'Beautiful Design',
+  'Indie Studio',
+];
+
+const apps = [
+  { href: '/app', icon: '🎯', title: 'App One', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
+  { href: '/app', icon: '✨', title: 'App Two', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
+  { href: '/app', icon: '🧩', title: 'App Three', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
+  { href: '/app', icon: '🔮', title: 'App Four', tagline: 'A short tagline describing what this app does.', badge: 'Coming Soon' },
+];
+
+const values = [
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    title: 'Privacy First',
+    description: 'Your data belongs to you — always has, always will',
+    delay: '0.1s',
+  },
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+    title: 'Quality Over Quantity',
+    description: 'Fewer apps, more love — every detail carefully considered',
+    delay: '0.15s',
+  },
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+    title: 'Honest Software',
+    description: 'Transparent design, honest pricing, and interfaces that respect your choices',
+    delay: '0.2s',
+  },
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+    title: 'Cross-Platform',
+    description: 'Beautifully native on both iOS and Android',
+    delay: '0.25s',
+  },
+];
+
+const contactLinksData = [
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>',
+    href: 'mailto:hello@hi1labs.com',
+    label: 'hello@hi1labs.com',
+  },
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    href: 'mailto:support@hi1labs.com',
+    label: 'support@hi1labs.com',
+  },
+];
+
+const socialLinksData = [
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+    href: 'https://twitter.com/hi1labs',
+    ariaLabel: 'Follow us on X (Twitter)',
+  },
+  {
+    iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
+    href: 'https://instagram.com/hi1labs',
+    ariaLabel: 'Follow us on Instagram',
+  },
+];
+---
+
+<BaseLayout
+  title="hi1 labs — Independent App Studio"
+  description="hi1 labs — an independent studio crafting thoughtful mobile experiences with simplicity, beauty, and care"
+  ogTitle="hi1 labs — Independent App Studio"
+  ogDescription="Thoughtful mobile experiences crafted with care, simplicity, and respect for your time"
+  ogUrl="https://hi1labs.com"
+  navLinks={navLinks}
+  footerLinks={footerLinks}
+  transparentNav={true}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <img class="hero-bg hero-bg-dark" src="/img/hero-bg.jpg" alt="" aria-hidden="true" />
+    <img class="hero-bg hero-bg-light" src="/img/hero-bg-light.jpg" alt="" aria-hidden="true" />
+    <div class="hero-content">
+      <p class="hero-eyebrow animate-on-scroll">Independent App Studio</p>
+      <h1 class="hero-title animate-on-scroll" style="--delay: 0.1s">
+        Apps that feel<br />like <em>magic</em>
+      </h1>
+      <p class="hero-subtitle animate-on-scroll" style="--delay: 0.2s">
+        Thoughtful mobile experiences — crafted with care, simplicity, and
+        genuine respect for your time
+      </p>
+      <div class="hero-actions animate-on-scroll" style="--delay: 0.3s">
+        <a href="#apps" class="btn btn-primary">Explore Our Apps</a>
+        <a href="#contact" class="btn btn-ghost">Say Hello</a>
+      </div>
+
+      <Marquee tags={heroMarqueeTags} class="animate-on-scroll" style="--delay: 0.4s" />
+    </div>
+  </section>
+
+  <!-- Apps -->
+  <section class="section section-alt" id="apps">
+    <div class="section-inner">
+      <SectionHeader
+        eyebrow="Our Apps"
+        title="Something wonderful is brewing"
+        subtitle="We're putting the finishing touches on our first release — follow along and be the first to know"
+      />
+    </div>
+    <div class="apps-carousel" id="apps-carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Previous app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <button class="carousel-arrow carousel-next" aria-label="Next app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+      <div class="apps-carousel-viewport">
+        <div class="apps-carousel-track" id="apps-track">
+          {apps.map((app) => (
+            <AppCard
+              href={app.href}
+              icon={app.icon}
+              title={app.title}
+              tagline={app.tagline}
+              badge={app.badge}
+            />
+          ))}
+        </div>
+      </div>
+      <div class="carousel-dots" id="apps-dots" aria-label="App navigation"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <SectionHeader
+        eyebrow="About"
+        title="Made with heart, built for you"
+        subtitle="hi1 labs is an independent studio on a simple mission — creating mobile apps that truly respect your time, your privacy, and your intelligence. One tool, one purpose, done exceptionally well"
+      />
+
+      <div class="values-grid">
+        {values.map((value) => (
+          <ValueCard
+            iconSvg={value.iconSvg}
+            title={value.title}
+            description={value.description}
+            delay={value.delay}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="section-inner contact-section">
+      <p class="section-eyebrow animate-on-scroll">Contact</p>
+      <h2 class="section-title animate-on-scroll" style="--delay: 0.05s">
+        Let's connect
+      </h2>
+      <p class="section-subtitle animate-on-scroll" style="--delay: 0.1s; margin: 0 auto">
+        Have an idea, some feedback, or just want to say hello? We'd
+        genuinely love to hear from you
+      </p>
+
+      <ContactLinks links={contactLinksData} />
+      <SocialLinks links={socialLinksData} />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { initCarousel } from '../scripts/carousel';
+
+  initCarousel({
+    carouselId: 'apps-carousel',
+    trackSelector: '.apps-carousel-track',
+    itemSelector: '.app-card',
+  });
+</script>

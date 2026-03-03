@@ -1,0 +1,18 @@
+---
+interface Props {
+  iconSvg: string;
+  title: string;
+  description: string;
+  delay?: string;
+}
+
+const { iconSvg, title, description, delay = '0s' } = Astro.props;
+---
+
+<div class="value-card animate-on-scroll" style={`--delay: ${delay}`}>
+  <div class="value-icon">
+    <Fragment set:html={iconSvg} />
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>

@@ -1,0 +1,117 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+
+const footerLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Contact', href: 'mailto:hello@hi1labs.com' },
+];
+---
+
+<LegalLayout
+  title="Privacy Policy — App Name — hi1 labs"
+  description="Privacy Policy for App Name by hi1 labs. Learn how we handle your data."
+  footerLinks={footerLinks}
+>
+  <header class="legal-header">
+    <p class="legal-eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="legal-meta">Last updated: March 1, 2026</p>
+  </header>
+
+  <h2>1. Introduction</h2>
+  <p>This Privacy Policy describes how <strong>hi1 labs</strong> ("we", "us", "our") handles information in connection with <strong>App Name</strong> ("the App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+  <p><strong>Our core principle:</strong> We collect as little data as possible and never sell your personal information.</p>
+
+  <h2>2. Information We Collect</h2>
+  <p>Here is a clear breakdown of our data practices:</p>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Collected?</th>
+          <th>Purpose</th>
+          <th>Shared?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Crash logs</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Fix bugs and improve stability (via Firebase Crashlytics)</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Anonymous usage analytics</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Understand which features are used (via Firebase Analytics)</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>User-created content</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Stored locally on your device only</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Personal information</td>
+          <td><span class="badge badge-no">No</span></td>
+          <td>—</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Location data</td>
+          <td><span class="badge badge-no">No</span></td>
+          <td>—</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3. Third-Party Services</h2>
+  <p>The App uses the following third-party services that may collect data according to their own privacy policies:</p>
+  <ul>
+    <li><strong>Firebase Analytics</strong> (Google) — anonymous usage analytics. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+    <li><strong>Firebase Crashlytics</strong> (Google) — crash reporting. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+  </ul>
+
+  <h2>4. Data Storage &amp; Security</h2>
+  <ul>
+    <li>All user-created content is stored <strong>locally on your device</strong></li>
+    <li>Analytics data is processed by Firebase according to their security standards</li>
+    <li>We do not maintain our own servers that store your personal data</li>
+  </ul>
+
+  <h2>5. Data Retention &amp; Deletion</h2>
+  <ul>
+    <li><strong>Firebase data</strong> is retained for up to 14 months, then automatically deleted</li>
+    <li><strong>Local data</strong> is deleted when you uninstall the App or clear its data</li>
+    <li>You can request deletion of analytics data by contacting us</li>
+  </ul>
+
+  <h2>6. Children's Privacy</h2>
+  <p>The App is not intended for children under 13 years of age. We do not knowingly collect data from children. If you believe we have inadvertently collected data from a child, please contact us and we will promptly delete it.</p>
+
+  <h2>7. Your Rights</h2>
+  <p>Depending on your location, you may have the right to:</p>
+  <ul>
+    <li>Access the data we hold about you</li>
+    <li>Request deletion of your data</li>
+    <li>Opt out of analytics collection</li>
+    <li>Request data portability</li>
+  </ul>
+  <p>To exercise any of these rights, please contact us using the details below.</p>
+
+  <h2>8. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by updating the "Last updated" date. Your continued use of the App after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>9. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+  <ul>
+    <li>Email: <a href="mailto:privacy@hi1labs.com">privacy@hi1labs.com</a></li>
+    <li>Website: <a href="https://hi1labs.com">hi1labs.com</a></li>
+  </ul>
+</LegalLayout>

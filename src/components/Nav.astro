@@ -1,0 +1,38 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  links: { label: string; href: string }[];
+  transparent?: boolean;
+}
+
+const { links, transparent = false } = Astro.props;
+---
+
+<nav class={`nav${transparent ? ' nav-transparent' : ''}`}>
+  <a href="/" class="nav-logo" aria-label="hi1 labs home">
+    <span class="logo-mark">h1</span>
+  </a>
+
+  <div id="nav-menu" class="nav-menu">
+    {links.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </div>
+
+  <div class="nav-actions">
+    <ThemeToggle />
+    <button
+      id="menu-toggle"
+      class="nav-burger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script src="../scripts/mobile-menu.ts"></script>
+{transparent && <script src="../scripts/nav-scroll.ts"></script>}

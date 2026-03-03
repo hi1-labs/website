@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+  title: string;
+  tagline: string;
+  badge?: string;
+}
+
+const { href, icon, title, tagline, badge } = Astro.props;
+---
+
+<a href={href} class="app-card">
+  <div class="app-card-icon">
+    <div class="app-card-icon-placeholder">{icon}</div>
+  </div>
+  <h3>{title}</h3>
+  <p>{tagline}</p>
+  {badge && <span class="app-card-badge">{badge}</span>}
+</a>
