@@ -46,7 +46,7 @@ export const home: HomeTranslations = {
     { title: 'Privacidade em primeiro', description: 'Seus dados pertencem a você — sempre foram e sempre serão' },
     { title: 'Qualidade sobre quantidade', description: 'Menos apps, mais amor — cada detalhe cuidadosamente considerado' },
     { title: 'Software honesto', description: 'Design transparente, preços honestos e interfaces que respeitam suas escolhas' },
-    { title: 'Multiplataforma', description: 'Lindamente nativo no iOS e Android' },
+    { title: 'Multiplataforma', description: 'Nativo e bonito no iOS e Android' },
   ],
   contact: {
     eyebrow: 'Contato',

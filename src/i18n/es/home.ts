@@ -14,7 +14,7 @@ export const home: HomeTranslations = {
     titleEmphasis: 'magia',
     subtitle: 'Experiencias móviles pensadas con cuidado, simplicidad y respeto genuino por tu tiempo',
     ctaExplore: 'Explorar nuestras apps',
-    ctaHello: 'Salúdanos',
+    ctaHello: 'Di hola',
   },
   marqueeTags: [
     'Privacidad primero',
@@ -43,7 +43,7 @@ export const home: HomeTranslations = {
     subtitle: 'hi1 labs es un estudio independiente con una misión simple: crear apps móviles que realmente respeten tu tiempo, tu privacidad y tu inteligencia. Una herramienta, un propósito, hecho excepcionalmente bien',
   },
   values: [
-    { title: 'Privacidad primero', description: 'Tus datos te pertenecen — siempre lo fueron y siempre lo serán' },
+    { title: 'Privacidad primero', description: 'Tus datos son tuyos — siempre lo han sido y siempre lo serán' },
     { title: 'Calidad sobre cantidad', description: 'Menos apps, más amor — cada detalle cuidadosamente considerado' },
     { title: 'Software honesto', description: 'Diseño transparente, precios honestos e interfaces que respetan tus decisiones' },
     { title: 'Multiplataforma', description: 'Bellamente nativo en iOS y Android' },

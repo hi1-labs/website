@@ -47,6 +47,6 @@ export const app: AppTranslations = {
   },
   schema: {
     name: 'App Name',
-    description: 'A clear, one-sentence description of what your app does and why it matters.',
+    description: 'Қолданбаңыз не істейтінін және неге маңызды екенін сипаттайтын бір сөйлем.',
   },
 };

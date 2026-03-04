@@ -26,7 +26,7 @@ export const app: AppTranslations = {
   },
   features: {
     eyebrow: 'Функции',
-    title: 'Всё что нужно, ничего лишнего',
+    title: 'Всё, что нужно — ничего лишнего',
   },
   featureItems: [
     { title: 'Функция', description: 'Короткое описание того, что делает эта функция и почему она важна для пользователя.' },
@@ -47,6 +47,6 @@ export const app: AppTranslations = {
   },
   schema: {
     name: 'App Name',
-    description: 'A clear, one-sentence description of what your app does and why it matters.',
+    description: 'Понятное описание того, что делает ваше приложение и почему это важно.',
   },
 };
