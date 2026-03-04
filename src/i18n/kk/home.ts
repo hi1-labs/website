@@ -57,4 +57,9 @@ export const home: HomeTranslations = {
     twitter: 'Біз X (Twitter) желісінде',
     instagram: 'Біз Instagram желісінде',
   },
+  carousel: {
+    label: 'Қолданба навигациясы',
+    prevLabel: 'Алдыңғы қолданба',
+    nextLabel: 'Келесі қолданба',
+  },
 };

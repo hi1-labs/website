@@ -60,13 +60,17 @@ const softwareAppSchema = {
   lang={lang}
   ogTitle={appT.meta.ogTitle}
   ogDescription={appT.meta.ogDescription}
-  ogUrl={`${SITE.url}/${lang}/app`}
+  ogUrl={`${SITE.url}/${lang}/app/`}
   navLinks={navLinks}
   footerLinks={footerLinks}
   footerAllRightsReserved={t.footer.allRightsReserved}
   skipToContent={t.skipToContent}
   themeToggleLabel={t.theme.toggleLabel}
   langSwitcherLabel={t.langSwitcher.switchTo}
+  mainNavLabel={t.nav.mainNavLabel}
+  homeLabel={t.nav.homeLabel}
+  menuToggleLabel={t.nav.menuToggleLabel}
+  footerNavigationLabel={t.footer.navigationLabel}
 >
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
@@ -78,7 +82,7 @@ const softwareAppSchema = {
         <div class="app-icon-placeholder">🎯</div>
       </div>
 
-      <h1 class="animate-on-scroll" style="--delay: 0.1s">{appT.hero.tagline} <em>{appT.hero.taglineEmphasis}</em> here</h1>
+      <h1 class="animate-on-scroll" style="--delay: 0.1s">{appT.hero.tagline} <em>{appT.hero.taglineEmphasis}</em> {appT.hero.taglineSuffix}</h1>
       <p class="app-hero-desc animate-on-scroll" style="--delay: 0.15s">
         {appT.hero.description}
       </p>
@@ -103,9 +107,10 @@ const softwareAppSchema = {
     </div>
     <Carousel
       id="screenshots-carousel"
-      ariaLabel="Screenshot navigation"
-      prevLabel="Previous screenshot"
-      nextLabel="Next screenshot"
+      ariaLabel={appT.carousel.label}
+      prevLabel={appT.carousel.prevLabel}
+      nextLabel={appT.carousel.nextLabel}
+      slideLabel={t.carousel.goToSlide}
     >
       <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 1</div></div>
       <div class="screenshot-frame"><div class="screenshot-placeholder">Screenshot 2</div></div>

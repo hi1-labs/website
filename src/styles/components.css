@@ -67,9 +67,6 @@
 .btn-ghost { color: var(--text-secondary); border: 1px solid var(--border-strong); background: transparent; }
 .btn-ghost:hover { color: var(--text-primary); border-color: var(--text-tertiary); background: var(--accent-dim); }
 
-.btn-outline { color: var(--accent); border: 1px solid var(--accent); background: transparent; }
-.btn-outline:hover { background: var(--accent-dim); transform: translateY(-1px); }
-
 .btn svg { width: 16px; height: 16px; }
 
 /* ========== CAROUSEL SHARED ========== */

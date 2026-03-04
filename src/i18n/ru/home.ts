@@ -57,4 +57,9 @@ export const home: HomeTranslations = {
     twitter: 'Мы в X (Twitter)',
     instagram: 'Мы в Instagram',
   },
+  carousel: {
+    label: 'Навигация приложений',
+    prevLabel: 'Предыдущее приложение',
+    nextLabel: 'Следующее приложение',
+  },
 };

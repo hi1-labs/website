@@ -14,6 +14,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      filter: (page) => page !== 'https://hi1labs.com/',
       i18n: {
         defaultLocale: 'en',
         locales: {

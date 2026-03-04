@@ -7,6 +7,9 @@ export interface CommonTranslations {
     features: string;
     support: string;
     allApps: string;
+    mainNavLabel: string;
+    homeLabel: string;
+    menuToggleLabel: string;
   };
   footer: {
     privacy: string;
@@ -14,6 +17,7 @@ export interface CommonTranslations {
     contact: string;
     home: string;
     allRightsReserved: string;
+    navigationLabel: string;
   };
   theme: {
     toggleLabel: string;
@@ -27,6 +31,15 @@ export interface CommonTranslations {
     appStoreName: string;
     googlePlayLabel: string;
     googlePlayName: string;
+  };
+  carousel: {
+    goToSlide: string;
+  };
+  notFound: {
+    title: string;
+    heading: string;
+    description: string;
+    backHome: string;
   };
 }
 
@@ -75,6 +88,11 @@ export interface HomeTranslations {
     twitter: string;
     instagram: string;
   };
+  carousel: {
+    label: string;
+    prevLabel: string;
+    nextLabel: string;
+  };
 }
 
 export interface AppTranslations {
@@ -87,9 +105,15 @@ export interface AppTranslations {
   hero: {
     tagline: string;
     taglineEmphasis: string;
+    taglineSuffix: string;
     description: string;
   };
   marqueeTags: string[];
+  carousel: {
+    label: string;
+    prevLabel: string;
+    nextLabel: string;
+  };
   screenshots: {
     eyebrow: string;
     title: string;

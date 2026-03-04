@@ -9,6 +9,9 @@ interface Props {
   lang: Locale;
   themeToggleLabel?: string;
   langSwitcherLabel?: string;
+  mainNavLabel?: string;
+  homeLabel?: string;
+  menuToggleLabel?: string;
 }
 
 const {
@@ -17,6 +20,9 @@ const {
   lang,
   themeToggleLabel = 'Toggle theme',
   langSwitcherLabel = 'Change language',
+  mainNavLabel = 'Main navigation',
+  homeLabel = 'hi1 labs home',
+  menuToggleLabel = 'Toggle menu',
 } = Astro.props;
 
 const otherLocales = getOtherLocales(lang);
@@ -31,8 +37,8 @@ const currentLangConfig = langConfig[lang];
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class={`nav${transparent ? ' nav-transparent' : ''}`}>
-  <a href={`/${lang}/`} class="nav-logo" aria-label="hi1 labs home">
+<nav class={`nav${transparent ? ' nav-transparent' : ''}`} aria-label={mainNavLabel}>
+  <a href={`/${lang}/`} class="nav-logo" aria-label={homeLabel}>
     <span class="logo-mark">h1</span>
   </a>
 
@@ -61,7 +67,7 @@ const currentPath = Astro.url.pathname;
     <button
       id="menu-toggle"
       class="nav-burger"
-      aria-label="Toggle menu"
+      aria-label={menuToggleLabel}
       aria-expanded="false"
     >
       <span></span>

@@ -9,6 +9,9 @@ export const common: CommonTranslations = {
     features: 'Recursos',
     support: 'Suporte',
     allApps: 'Todos os apps',
+    mainNavLabel: 'Navegação principal',
+    homeLabel: 'Início hi1 labs',
+    menuToggleLabel: 'Alternar menu',
   },
   footer: {
     privacy: 'Privacidade',
@@ -16,6 +19,7 @@ export const common: CommonTranslations = {
     contact: 'Contato',
     home: 'Início',
     allRightsReserved: 'Todos os direitos reservados.',
+    navigationLabel: 'Navegação do rodapé',
   },
   theme: {
     toggleLabel: 'Alternar tema',
@@ -29,5 +33,14 @@ export const common: CommonTranslations = {
     appStoreName: 'App Store',
     googlePlayLabel: 'Disponível no',
     googlePlayName: 'Google Play',
+  },
+  carousel: {
+    goToSlide: 'Ir para o slide',
+  },
+  notFound: {
+    title: 'Página não encontrada',
+    heading: 'Página não encontrada',
+    description: 'A página que você procura não existe ou foi movida.',
+    backHome: 'Voltar ao início',
   },
 };

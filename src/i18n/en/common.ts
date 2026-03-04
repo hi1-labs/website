@@ -9,6 +9,9 @@ export const common: CommonTranslations = {
     features: 'Features',
     support: 'Support',
     allApps: 'All Apps',
+    mainNavLabel: 'Main navigation',
+    homeLabel: 'hi1 labs home',
+    menuToggleLabel: 'Toggle menu',
   },
   footer: {
     privacy: 'Privacy',
@@ -16,6 +19,7 @@ export const common: CommonTranslations = {
     contact: 'Contact',
     home: 'Home',
     allRightsReserved: 'All rights reserved.',
+    navigationLabel: 'Footer navigation',
   },
   theme: {
     toggleLabel: 'Toggle theme',
@@ -29,5 +33,14 @@ export const common: CommonTranslations = {
     appStoreName: 'App Store',
     googlePlayLabel: 'Get it on',
     googlePlayName: 'Google Play',
+  },
+  carousel: {
+    goToSlide: 'Go to slide',
+  },
+  notFound: {
+    title: 'Page not found',
+    heading: 'Page not found',
+    description: "The page you're looking for doesn't exist or has been moved.",
+    backHome: 'Back to home',
   },
 };

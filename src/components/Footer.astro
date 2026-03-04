@@ -6,15 +6,16 @@ interface Props {
   links: { label: string; href: string }[];
   lang: Locale;
   allRightsReserved: string;
+  navigationLabel?: string;
 }
 
-const { links, lang, allRightsReserved } = Astro.props;
+const { links, lang, allRightsReserved, navigationLabel = 'Footer navigation' } = Astro.props;
 ---
 
 <footer class="footer">
   <div class="footer-inner">
     <a href={`/${lang}/`} class="logo-mark">h1</a>
-    <nav class="footer-nav" aria-label="Footer navigation">
+    <nav class="footer-nav" aria-label={navigationLabel}>
       {links.map((link) => (
         <a href={link.href}>{link.label}</a>
       ))}

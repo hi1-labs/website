@@ -287,8 +287,3 @@
 }
 
 .social-btn svg { width: 18px; height: 18px; }
-
-/* ========== REDUCED MOTION ========== */
-@media (prefers-reduced-motion: reduce) {
-    .coming-soon-icon { animation: none; }
-}

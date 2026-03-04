@@ -9,6 +9,9 @@ export const common: CommonTranslations = {
     features: 'Функции',
     support: 'Поддержка',
     allApps: 'Все приложения',
+    mainNavLabel: 'Основная навигация',
+    homeLabel: 'Главная hi1 labs',
+    menuToggleLabel: 'Переключить меню',
   },
   footer: {
     privacy: 'Конфиденциальность',
@@ -16,6 +19,7 @@ export const common: CommonTranslations = {
     contact: 'Контакты',
     home: 'Главная',
     allRightsReserved: 'Все права защищены.',
+    navigationLabel: 'Навигация подвала',
   },
   theme: {
     toggleLabel: 'Переключить тему',
@@ -29,5 +33,14 @@ export const common: CommonTranslations = {
     appStoreName: 'App Store',
     googlePlayLabel: 'Доступно в',
     googlePlayName: 'Google Play',
+  },
+  carousel: {
+    goToSlide: 'Перейти к слайду',
+  },
+  notFound: {
+    title: 'Страница не найдена',
+    heading: 'Страница не найдена',
+    description: 'Страница, которую вы ищете, не существует или была перемещена.',
+    backHome: 'На главную',
   },
 };

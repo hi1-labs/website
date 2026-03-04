@@ -10,6 +10,7 @@ export const app: AppTranslations = {
   hero: {
     tagline: 'Сіздің қолданба',
     taglineEmphasis: 'слоганы',
+    taglineSuffix: 'мұнда',
     description: 'Қолданбаңыз не істейтінін және адамдарға неге ұнайтынын сипаттайтын бір сөйлем.',
   },
   marqueeTags: [
@@ -20,6 +21,11 @@ export const app: AppTranslations = {
     'Жарнамасыз',
     'Әдемі UI',
   ],
+  carousel: {
+    label: 'Скриншот навигациясы',
+    prevLabel: 'Алдыңғы скриншот',
+    nextLabel: 'Келесі скриншот',
+  },
   screenshots: {
     eyebrow: 'Алдын ала қарау',
     title: 'Іс жүзінде көріңіз',

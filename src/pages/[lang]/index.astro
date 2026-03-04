@@ -88,6 +88,10 @@ const websiteSchema = {
   skipToContent={t.skipToContent}
   themeToggleLabel={t.theme.toggleLabel}
   langSwitcherLabel={t.langSwitcher.switchTo}
+  mainNavLabel={t.nav.mainNavLabel}
+  homeLabel={t.nav.homeLabel}
+  menuToggleLabel={t.nav.menuToggleLabel}
+  footerNavigationLabel={t.footer.navigationLabel}
 >
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
@@ -131,9 +135,10 @@ const websiteSchema = {
     </div>
     <Carousel
       id="apps-carousel"
-      ariaLabel="App navigation"
-      prevLabel="Previous app"
-      nextLabel="Next app"
+      ariaLabel={home.carousel.label}
+      prevLabel={home.carousel.prevLabel}
+      nextLabel={home.carousel.nextLabel}
+      slideLabel={t.carousel.goToSlide}
       trackClass="apps-carousel-track"
       class="apps-carousel"
     >

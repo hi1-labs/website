@@ -57,4 +57,9 @@ export const home: HomeTranslations = {
     twitter: 'Siga-nos no X (Twitter)',
     instagram: 'Siga-nos no Instagram',
   },
+  carousel: {
+    label: 'Navegação de apps',
+    prevLabel: 'App anterior',
+    nextLabel: 'Próximo app',
+  },
 };

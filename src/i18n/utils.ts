@@ -1,5 +1,5 @@
 import type { Locale } from './config';
-import { DEFAULT_LOCALE, LOCALES } from './config';
+import { LOCALES } from './config';
 import type { CommonTranslations, HomeTranslations, AppTranslations, LegalTranslations } from './types';
 
 import { common as enCommon } from './en/common';
@@ -58,11 +58,6 @@ export function getLocalizedPath(currentPath: string, targetLocale: Locale): str
 
 export function getOtherLocales(current: Locale): Locale[] {
   return LOCALES.filter((l) => l !== current) as Locale[];
-}
-
-export function getLocaleFromUrl(url: URL): Locale {
-  const [, lang] = url.pathname.split('/');
-  return LOCALES.includes(lang as Locale) ? (lang as Locale) : DEFAULT_LOCALE;
 }
 
 const OG_LOCALE_MAP: Record<Locale, string> = {

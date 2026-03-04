@@ -27,6 +27,24 @@ document.querySelectorAll<HTMLAnchorElement>('.lang-dropdown-item').forEach((lin
   });
 });
 
+/* ---- Language dropdown: Escape key + click-outside ---- */
+
+const langDropdown = document.querySelector<HTMLDetailsElement>('.lang-dropdown');
+
+if (langDropdown) {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && langDropdown.open) {
+      langDropdown.open = false;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (langDropdown.open && !langDropdown.contains(e.target as Node)) {
+      langDropdown.open = false;
+    }
+  });
+}
+
 /* ---- Mobile menu ---- */
 
 if (burger && menu) {

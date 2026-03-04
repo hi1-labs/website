@@ -4,6 +4,11 @@
 // Accept-Language detection and redirects before this page is served.
 // This page only appears in local dev or non-CF environments.
 // The inline script auto-redirects based on navigator.language.
+import { LANG_STORAGE_KEY } from '@data/site';
+import { LOCALES } from '@i18n/config';
+
+const langKey = LANG_STORAGE_KEY;
+const supportedLocales = JSON.stringify([...LOCALES]);
 ---
 <!doctype html>
 <html>
@@ -12,11 +17,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>hi1 labs</title>
-  <script is:inline>
+  <script is:inline define:vars={{ langKey, supportedLocales }}>
     (function () {
-      // SYNC: key must match LANG_STORAGE_KEY in src/data/site.ts
-      var supported = ['en', 'ru', 'kk', 'es', 'pt'];
-      var saved = localStorage.getItem('hi1-lang');
+      var supported = JSON.parse(supportedLocales);
+      var saved = localStorage.getItem(langKey);
       if (saved && supported.indexOf(saved) !== -1) {
         window.location.replace('/' + saved + '/');
         return;

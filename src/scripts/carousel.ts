@@ -16,12 +16,13 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
 
   if (!track || !viewport || !dotsContainer) return () => {};
 
+  const slideLabel = carousel.dataset.slideLabel || 'Go to slide';
   const controller = new AbortController();
   const { signal } = controller;
 
   const items = track.querySelectorAll<HTMLElement>(itemSelector);
   const itemCount = items.length;
-  if (!itemCount) return;
+  if (!itemCount) return () => {};
 
   let currentIndex = 0;
 
@@ -33,7 +34,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   items.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.setAttribute('aria-label', `${slideLabel} ${i + 1}`);
     dot.addEventListener('click', () => goToSlide(i), { signal });
     dotsContainer.appendChild(dot);
   });
@@ -177,4 +178,3 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
 }
 
 export { initCarousel };
-export type { CarouselOptions };

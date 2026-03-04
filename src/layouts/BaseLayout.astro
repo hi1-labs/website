@@ -1,7 +1,7 @@
 ---
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
-import { FONTS_URL, SITE, SEO } from '@data/site';
+import { FONTS_URL, SITE, SEO, THEME_STORAGE_KEY, LANG_STORAGE_KEY } from '@data/site';
 import type { Locale } from '@i18n/config';
 import { LOCALES } from '@i18n/config';
 import { getOgLocale } from '@i18n/utils';
@@ -24,6 +24,10 @@ interface Props {
   skipToContent?: string;
   themeToggleLabel?: string;
   langSwitcherLabel?: string;
+  mainNavLabel?: string;
+  homeLabel?: string;
+  menuToggleLabel?: string;
+  footerNavigationLabel?: string;
 }
 
 const {
@@ -42,6 +46,10 @@ const {
   skipToContent = 'Skip to main content',
   themeToggleLabel = 'Toggle theme',
   langSwitcherLabel = 'Switch language',
+  mainNavLabel = 'Main navigation',
+  homeLabel = 'hi1 labs home',
+  menuToggleLabel = 'Toggle menu',
+  footerNavigationLabel = 'Footer navigation',
 } = Astro.props;
 
 const isLegal = variant === 'legal';
@@ -54,6 +62,8 @@ const resolvedOgDescription = ogDescription || description;
 const resolvedOgUrl = ogUrl || canonicalUrl;
 const resolvedOgImage = ogImage || SEO.defaultOgImage;
 const ogLocale = getOgLocale(lang);
+const themeKey = THEME_STORAGE_KEY;
+const langKey = LANG_STORAGE_KEY;
 ---
 
 <!doctype html>
@@ -93,15 +103,13 @@ const ogLocale = getOgLocale(lang);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={FONTS_URL} rel="stylesheet" />
-    <script is:inline>
+    <script is:inline define:vars={{ themeKey, langKey }}>
       (function () {
-        // SYNC: key must match THEME_STORAGE_KEY in src/data/site.ts
-        var t = localStorage.getItem('hi1-theme');
+        var t = localStorage.getItem(themeKey);
         if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', t);
-        // SYNC: key must match LANG_STORAGE_KEY in src/data/site.ts
         var lang = document.documentElement.lang;
-        if (lang) localStorage.setItem('hi1-lang', lang);
+        if (lang) localStorage.setItem(langKey, lang);
       })();
     </script>
     <slot name="head" />
@@ -114,11 +122,14 @@ const ogLocale = getOgLocale(lang);
       lang={lang}
       themeToggleLabel={themeToggleLabel}
       langSwitcherLabel={langSwitcherLabel}
+      mainNavLabel={mainNavLabel}
+      homeLabel={homeLabel}
+      menuToggleLabel={menuToggleLabel}
     />
     <main id="main-content" class={isLegal ? 'legal' : undefined}>
       <slot />
     </main>
-    <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} />
+    <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} navigationLabel={footerNavigationLabel} />
     {!isLegal && <script src="../scripts/animations.ts"></script>}
   </body>
 </html>

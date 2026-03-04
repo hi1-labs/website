@@ -4,6 +4,7 @@ interface Props {
   ariaLabel: string;
   prevLabel?: string;
   nextLabel?: string;
+  slideLabel?: string;
   trackClass?: string;
   class?: string;
 }
@@ -13,12 +14,13 @@ const {
   ariaLabel,
   prevLabel = 'Previous',
   nextLabel = 'Next',
+  slideLabel = 'Go to slide',
   trackClass = 'carousel-track',
   class: className,
 } = Astro.props;
 ---
 
-<div class={`carousel${className ? ` ${className}` : ''}`} id={id}>
+<div class={`carousel${className ? ` ${className}` : ''}`} id={id} data-slide-label={slideLabel}>
   <button class="carousel-arrow carousel-prev" aria-label={prevLabel}>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="15 18 9 12 15 6" />

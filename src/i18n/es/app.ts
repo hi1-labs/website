@@ -10,6 +10,7 @@ export const app: AppTranslations = {
   hero: {
     tagline: 'Tu app',
     taglineEmphasis: 'eslogan',
+    taglineSuffix: 'aquí',
     description: 'Una descripción clara de lo que hace tu app y por qué la gente la amará.',
   },
   marqueeTags: [
@@ -20,6 +21,11 @@ export const app: AppTranslations = {
     'Sin anuncios',
     'UI hermosa',
   ],
+  carousel: {
+    label: 'Navegación de capturas',
+    prevLabel: 'Captura anterior',
+    nextLabel: 'Siguiente captura',
+  },
   screenshots: {
     eyebrow: 'Vista previa',
     title: 'Mírala en acción',
