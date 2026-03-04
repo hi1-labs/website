@@ -33,18 +33,6 @@ export const legal: LegalTranslations = {
       </thead>
       <tbody>
         <tr>
-          <td>Registros de falhas</td>
-          <td><span class="badge badge-yes">Sim</span></td>
-          <td>Corrigir bugs e melhorar a estabilidade (via Firebase Crashlytics)</td>
-          <td>Não</td>
-        </tr>
-        <tr>
-          <td>Análise anônima</td>
-          <td><span class="badge badge-yes">Sim</span></td>
-          <td>Entender quais recursos são usados (via Firebase Analytics)</td>
-          <td>Não</td>
-        </tr>
-        <tr>
           <td>Conteúdo do usuário</td>
           <td><span class="badge badge-yes">Sim</span></td>
           <td>Armazenado localmente apenas no seu dispositivo</td>
@@ -67,24 +55,17 @@ export const legal: LegalTranslations = {
   </div>
 
   <h2>3. Serviços de terceiros</h2>
-  <p>O Aplicativo utiliza os seguintes serviços de terceiros que podem coletar dados de acordo com suas próprias políticas de privacidade:</p>
-  <ul>
-    <li><strong>Firebase Analytics</strong> (Google) — análise anônima de uso. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Política de privacidade</a></li>
-    <li><strong>Firebase Crashlytics</strong> (Google) — relatórios de falhas. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Política de privacidade</a></li>
-  </ul>
+  <p>O Aplicativo atualmente não utiliza serviços de terceiros que coletam dados dos usuários.</p>
 
   <h2>4. Armazenamento e segurança de dados</h2>
   <ul>
     <li>Todo o conteúdo do usuário é armazenado <strong>localmente no seu dispositivo</strong></li>
-    <li>Dados analíticos são processados pelo Firebase de acordo com seus padrões de segurança</li>
     <li>Não mantemos servidores próprios que armazenem seus dados pessoais</li>
   </ul>
 
   <h2>5. Retenção e exclusão de dados</h2>
   <ul>
-    <li><strong>Dados do Firebase</strong> são retidos por até 14 meses, depois excluídos automaticamente</li>
     <li><strong>Dados locais</strong> são excluídos ao desinstalar o Aplicativo ou limpar seus dados</li>
-    <li>Você pode solicitar a exclusão de dados analíticos entrando em contato conosco</li>
   </ul>
 
   <h2>6. Privacidade infantil</h2>
@@ -95,7 +76,6 @@ export const legal: LegalTranslations = {
   <ul>
     <li>Acessar os dados que temos sobre você</li>
     <li>Solicitar a exclusão dos seus dados</li>
-    <li>Optar por não participar da coleta analítica</li>
     <li>Solicitar a portabilidade de dados</li>
   </ul>
   <p>Para exercer qualquer um desses direitos, entre em contato conosco usando os dados abaixo.</p>
@@ -155,7 +135,7 @@ export const legal: LegalTranslations = {
   <p>Podemos atualizar estes Termos periodicamente. Notificaremos você sobre mudanças importantes atualizando a data de "Última atualização". O uso continuado do Aplicativo após as mudanças constitui aceitação dos Termos atualizados.</p>
 
   <h2>7. Lei aplicável</h2>
-  <p>Estes Termos serão regidos e interpretados de acordo com as leis de [Sua jurisdição], sem considerar suas disposições sobre conflitos de leis.</p>
+  <p>Estes Termos serão regidos e interpretados de acordo com as leis de a República do Cazaquistão, sem considerar suas disposições sobre conflitos de leis.</p>
 
   <h2>8. Entre em contato</h2>
   <p>Se você tiver dúvidas sobre estes Termos, entre em contato:</p>

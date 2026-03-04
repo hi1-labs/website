@@ -1,0 +1,112 @@
+---
+import Nav from '@components/Nav.astro';
+import Footer from '@components/Footer.astro';
+import { FONTS_URL, SITE } from '@data/site';
+import '@styles/common.css';
+import '@styles/components.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="robots" content="noindex" />
+    <title id="page-title">Page not found — hi1 labs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={FONTS_URL} rel="stylesheet" />
+    <script is:inline>
+      (function () {
+        var t = localStorage.getItem('hi1-theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <style>
+      .not-found {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100dvh - var(--nav-height) - 120px);
+        padding: calc(var(--nav-height) + 4rem) 1.5rem 4rem;
+        text-align: center;
+      }
+
+      .not-found-code {
+        font-size: clamp(5rem, 15vw, 10rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .not-found-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+      }
+
+      .not-found-desc {
+        font-size: 1.125rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <Nav
+      links={[]}
+      transparent={false}
+      lang="en"
+      themeToggleLabel="Toggle theme"
+      langSwitcherLabel="Change language"
+    />
+    <main id="main-content" class="not-found">
+      <p class="not-found-code">404</p>
+      <h1 class="not-found-title" id="nf-heading">Page not found</h1>
+      <p class="not-found-desc" id="nf-desc">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/en/" class="btn btn-primary" id="nf-link">Back to home</a>
+    </main>
+    <Footer links={[]} lang="en" allRightsReserved={`© ${SITE.year} ${SITE.name}. All rights reserved.`} />
+    <script is:inline>
+      (function () {
+        var t = {
+          en: { title: 'Page not found', heading: 'Page not found', desc: "The page you're looking for doesn't exist or has been moved.", link: 'Back to home' },
+          ru: { title: 'Страница не найдена', heading: 'Страница не найдена', desc: 'Страница, которую вы ищете, не существует или была перемещена.', link: 'На главную' },
+          kk: { title: 'Бет табылмады', heading: 'Бет табылмады', desc: 'Сіз іздеп отырған бет жоқ немесе жылжытылды.', link: 'Басты бетке' },
+          es: { title: 'Página no encontrada', heading: 'Página no encontrada', desc: 'La página que buscas no existe o ha sido movida.', link: 'Ir al inicio' },
+          pt: { title: 'Página não encontrada', heading: 'Página não encontrada', desc: 'A página que você procura não existe ou foi movida.', link: 'Voltar ao início' }
+        };
+        var locales = ['en', 'ru', 'kk', 'es', 'pt'];
+        var pathLang = window.location.pathname.split('/')[1];
+        var lang = locales.indexOf(pathLang) !== -1 ? pathLang : 'en';
+        var navLang = navigator.language || '';
+        if (lang === 'en' && locales.indexOf(pathLang) === -1) {
+          var nl = navLang.toLowerCase();
+          if (nl.indexOf('kk') !== -1) lang = 'kk';
+          else if (nl.indexOf('ru') !== -1) lang = 'ru';
+          else if (nl.indexOf('es') !== -1) lang = 'es';
+          else if (nl.indexOf('pt') !== -1) lang = 'pt';
+        }
+        var tr = t[lang] || t.en;
+        document.getElementById('page-title').textContent = tr.title + ' — hi1 labs';
+        document.getElementById('nf-heading').textContent = tr.heading;
+        document.getElementById('nf-desc').textContent = tr.desc;
+        var link = document.getElementById('nf-link');
+        link.textContent = tr.link;
+        link.href = '/' + lang + '/';
+        document.documentElement.lang = lang;
+      })();
+    </script>
+  </body>
+</html>

@@ -20,6 +20,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const THEME_STORAGE_KEY = 'hi1-theme';
+export const LANG_STORAGE_KEY = 'hi1-lang';
 export const SCROLL_THRESHOLD = 16;
 
 export const FONTS_URL =

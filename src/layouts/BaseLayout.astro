@@ -4,7 +4,7 @@ import Footer from '@components/Footer.astro';
 import { FONTS_URL, SITE, SEO } from '@data/site';
 import type { Locale } from '@i18n/config';
 import { LOCALES } from '@i18n/config';
-import { getOtherLocales, getOgLocale } from '@i18n/utils';
+import { getOgLocale } from '@i18n/utils';
 import '@styles/common.css';
 import '@styles/components.css';
 
@@ -54,7 +54,6 @@ const resolvedOgDescription = ogDescription || description;
 const resolvedOgUrl = ogUrl || canonicalUrl;
 const resolvedOgImage = ogImage || SEO.defaultOgImage;
 const ogLocale = getOgLocale(lang);
-const otherLocales = getOtherLocales(lang);
 ---
 
 <!doctype html>
@@ -100,6 +99,9 @@ const otherLocales = getOtherLocales(lang);
         var t = localStorage.getItem('hi1-theme');
         if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', t);
+        // SYNC: key must match LANG_STORAGE_KEY in src/data/site.ts
+        var lang = document.documentElement.lang;
+        if (lang) localStorage.setItem('hi1-lang', lang);
       })();
     </script>
     <slot name="head" />
@@ -117,6 +119,6 @@ const otherLocales = getOtherLocales(lang);
       <slot />
     </main>
     <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} />
-    <script src="../scripts/animations.ts"></script>
+    {!isLegal && <script src="../scripts/animations.ts"></script>}
   </body>
 </html>

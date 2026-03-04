@@ -1,4 +1,4 @@
-import { SCROLL_THRESHOLD } from '../data/site';
+import { SCROLL_THRESHOLD, LANG_STORAGE_KEY } from '../data/site';
 
 const nav = document.querySelector('.nav-transparent');
 const burger = document.getElementById('menu-toggle');
@@ -15,6 +15,17 @@ if (nav) {
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
 }
+
+/* ---- Language switcher: persist choice ---- */
+
+document.querySelectorAll<HTMLAnchorElement>('.lang-dropdown-item').forEach((link) => {
+  link.addEventListener('click', () => {
+    const match = link.getAttribute('href')?.match(/^\/(\w{2})\//);
+    if (match) {
+      localStorage.setItem(LANG_STORAGE_KEY, match[1]);
+    }
+  });
+});
 
 /* ---- Mobile menu ---- */
 

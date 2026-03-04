@@ -33,18 +33,6 @@ export const legal: LegalTranslations = {
       </thead>
       <tbody>
         <tr>
-          <td>Registros de fallos</td>
-          <td><span class="badge badge-yes">Sí</span></td>
-          <td>Corregir errores y mejorar la estabilidad (a través de Firebase Crashlytics)</td>
-          <td>No</td>
-        </tr>
-        <tr>
-          <td>Analítica anónima</td>
-          <td><span class="badge badge-yes">Sí</span></td>
-          <td>Comprender qué funciones se utilizan (a través de Firebase Analytics)</td>
-          <td>No</td>
-        </tr>
-        <tr>
           <td>Contenido del usuario</td>
           <td><span class="badge badge-yes">Sí</span></td>
           <td>Almacenado localmente solo en tu dispositivo</td>
@@ -67,24 +55,17 @@ export const legal: LegalTranslations = {
   </div>
 
   <h2>3. Servicios de terceros</h2>
-  <p>La Aplicación utiliza los siguientes servicios de terceros que pueden recopilar datos según sus propias políticas de privacidad:</p>
-  <ul>
-    <li><strong>Firebase Analytics</strong> (Google) — analítica anónima de uso. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Política de privacidad</a></li>
-    <li><strong>Firebase Crashlytics</strong> (Google) — informes de fallos. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Política de privacidad</a></li>
-  </ul>
+  <p>La Aplicación actualmente no utiliza servicios de terceros que recopilen datos de los usuarios.</p>
 
   <h2>4. Almacenamiento y seguridad de datos</h2>
   <ul>
     <li>Todo el contenido del usuario se almacena <strong>localmente en tu dispositivo</strong></li>
-    <li>Los datos analíticos son procesados por Firebase según sus estándares de seguridad</li>
     <li>No mantenemos servidores propios que almacenen tus datos personales</li>
   </ul>
 
   <h2>5. Retención y eliminación de datos</h2>
   <ul>
-    <li><strong>Datos de Firebase</strong> se retienen hasta 14 meses, luego se eliminan automáticamente</li>
     <li><strong>Datos locales</strong> se eliminan al desinstalar la Aplicación o borrar sus datos</li>
-    <li>Puedes solicitar la eliminación de datos analíticos contactándonos</li>
   </ul>
 
   <h2>6. Privacidad infantil</h2>
@@ -95,7 +76,6 @@ export const legal: LegalTranslations = {
   <ul>
     <li>Acceder a los datos que tenemos sobre ti</li>
     <li>Solicitar la eliminación de tus datos</li>
-    <li>Optar por no participar en la recopilación analítica</li>
     <li>Solicitar la portabilidad de datos</li>
   </ul>
   <p>Para ejercer cualquiera de estos derechos, contáctanos usando los datos a continuación.</p>
@@ -155,7 +135,7 @@ export const legal: LegalTranslations = {
   <p>Podemos actualizar estos Términos periódicamente. Te notificaremos de cambios importantes actualizando la fecha de "Última actualización". El uso continuado de la Aplicación después de los cambios constituye la aceptación de los Términos actualizados.</p>
 
   <h2>7. Ley aplicable</h2>
-  <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de [Tu jurisdicción], sin tener en cuenta sus disposiciones sobre conflictos de leyes.</p>
+  <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de la República de Kazajistán, sin tener en cuenta sus disposiciones sobre conflictos de leyes.</p>
 
   <h2>8. Contáctanos</h2>
   <p>Si tienes preguntas sobre estos Términos, contáctanos:</p>

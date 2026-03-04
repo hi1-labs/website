@@ -3,24 +3,33 @@
 // On Cloudflare Pages, the edge Function (functions/index.ts) handles
 // Accept-Language detection and redirects before this page is served.
 // This page only appears in local dev or non-CF environments.
+// The inline script auto-redirects based on navigator.language.
 ---
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
   <title>hi1 labs</title>
-  <style>
-    body { font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; gap: 2rem; margin: 0; background: #000; color: #fff; }
-    a { color: #0A84FF; font-size: 1.25rem; text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
-    a:hover { background: rgba(10,132,255,0.1); }
-  </style>
+  <script is:inline>
+    (function () {
+      // SYNC: key must match LANG_STORAGE_KEY in src/data/site.ts
+      var supported = ['en', 'ru', 'kk', 'es', 'pt'];
+      var saved = localStorage.getItem('hi1-lang');
+      if (saved && supported.indexOf(saved) !== -1) {
+        window.location.replace('/' + saved + '/');
+        return;
+      }
+      var lang = (navigator.language || '').toLowerCase();
+      var target = 'en';
+      if (lang.startsWith('kk')) target = 'kk';
+      else if (lang.startsWith('ru')) target = 'ru';
+      else if (lang.startsWith('es')) target = 'es';
+      else if (lang.startsWith('pt')) target = 'pt';
+      window.location.replace('/' + target + '/');
+    })();
+  </script>
 </head>
-<body>
-  <a href="/en/">🇺🇸 English</a>
-  <a href="/ru/">🇷🇺 Русский</a>
-  <a href="/kk/">🇰🇿 Қазақша</a>
-  <a href="/es/">🇪🇸 Español</a>
-  <a href="/pt/">🇧🇷 Português</a>
-</body>
+<body></body>
 </html>

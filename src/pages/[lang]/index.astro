@@ -90,13 +90,19 @@ const websiteSchema = {
   langSwitcherLabel={t.langSwitcher.switchTo}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </Fragment>
   <!-- Hero -->
   <section class="hero">
-    <img class="hero-bg hero-bg-dark" src="/background/hero-bg.jpg" alt="" aria-hidden="true" />
-    <img class="hero-bg hero-bg-light" src="/background/hero-bg-light.jpg" alt="" aria-hidden="true" />
+    <picture class="hero-bg hero-bg-dark" aria-hidden="true">
+      <source srcset="/background/hero-bg.webp" type="image/webp" />
+      <img src="/background/hero-bg.jpg" alt="" />
+    </picture>
+    <picture class="hero-bg hero-bg-light" aria-hidden="true">
+      <source srcset="/background/hero-bg-light.webp" type="image/webp" />
+      <img src="/background/hero-bg-light.jpg" alt="" />
+    </picture>
     <div class="hero-content">
       <p class="hero-eyebrow animate-on-scroll">{home.hero.eyebrow}</p>
       <h1 class="hero-title animate-on-scroll" style="--delay: 0.1s">

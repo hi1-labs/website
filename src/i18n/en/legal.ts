@@ -33,18 +33,6 @@ export const legal: LegalTranslations = {
       </thead>
       <tbody>
         <tr>
-          <td>Crash logs</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Fix bugs and improve stability (via Firebase Crashlytics)</td>
-          <td>No</td>
-        </tr>
-        <tr>
-          <td>Anonymous usage analytics</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Understand which features are used (via Firebase Analytics)</td>
-          <td>No</td>
-        </tr>
-        <tr>
           <td>User-created content</td>
           <td><span class="badge badge-yes">Yes</span></td>
           <td>Stored locally on your device only</td>
@@ -67,24 +55,17 @@ export const legal: LegalTranslations = {
   </div>
 
   <h2>3. Third-Party Services</h2>
-  <p>The App uses the following third-party services that may collect data according to their own privacy policies:</p>
-  <ul>
-    <li><strong>Firebase Analytics</strong> (Google) — anonymous usage analytics. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
-    <li><strong>Firebase Crashlytics</strong> (Google) — crash reporting. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
-  </ul>
+  <p>The App does not currently use any third-party services that collect user data.</p>
 
   <h2>4. Data Storage &amp; Security</h2>
   <ul>
     <li>All user-created content is stored <strong>locally on your device</strong></li>
-    <li>Analytics data is processed by Firebase according to their security standards</li>
     <li>We do not maintain our own servers that store your personal data</li>
   </ul>
 
   <h2>5. Data Retention &amp; Deletion</h2>
   <ul>
-    <li><strong>Firebase data</strong> is retained for up to 14 months, then automatically deleted</li>
     <li><strong>Local data</strong> is deleted when you uninstall the App or clear its data</li>
-    <li>You can request deletion of analytics data by contacting us</li>
   </ul>
 
   <h2>6. Children's Privacy</h2>
@@ -95,7 +76,6 @@ export const legal: LegalTranslations = {
   <ul>
     <li>Access the data we hold about you</li>
     <li>Request deletion of your data</li>
-    <li>Opt out of analytics collection</li>
     <li>Request data portability</li>
   </ul>
   <p>To exercise any of these rights, please contact us using the details below.</p>
@@ -155,7 +135,7 @@ export const legal: LegalTranslations = {
   <p>We may update these Terms from time to time. We will notify you of any material changes by updating the "Last updated" date. Your continued use of the App after changes constitutes acceptance of the updated Terms.</p>
 
   <h2>7. Governing Law</h2>
-  <p>These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions.</p>
+  <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Kazakhstan, without regard to its conflict of law provisions.</p>
 
   <h2>8. Contact Us</h2>
   <p>If you have any questions about these Terms, please contact us:</p>

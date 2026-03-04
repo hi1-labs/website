@@ -4,9 +4,9 @@ interface CarouselOptions {
   itemSelector: string;
 }
 
-function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptions): void {
+function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptions): () => void {
   const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
+  if (!carousel) return () => {};
 
   const track = carousel.querySelector<HTMLElement>(trackSelector);
   const viewport = carousel.querySelector<HTMLElement>('.carousel-viewport');
@@ -14,7 +14,10 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   const prevBtn = carousel.querySelector<HTMLButtonElement>('.carousel-prev');
   const nextBtn = carousel.querySelector<HTMLButtonElement>('.carousel-next');
 
-  if (!track || !viewport || !dotsContainer) return;
+  if (!track || !viewport || !dotsContainer) return () => {};
+
+  const controller = new AbortController();
+  const { signal } = controller;
 
   const items = track.querySelectorAll<HTMLElement>(itemSelector);
   const itemCount = items.length;
@@ -31,7 +34,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
     dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.addEventListener('click', () => goToSlide(i));
+    dot.addEventListener('click', () => goToSlide(i), { signal });
     dotsContainer.appendChild(dot);
   });
 
@@ -82,13 +85,13 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       if (currentIndex > 0) goToSlide(currentIndex - 1);
-    });
+    }, { signal });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       if (currentIndex < itemCount - 1) goToSlide(currentIndex + 1);
-    });
+    }, { signal });
   }
 
   /* --- Touch swipe --- */
@@ -99,11 +102,11 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
   viewport.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchDeltaX = 0;
-  }, { passive: true });
+  }, { passive: true, signal });
 
   viewport.addEventListener('touchmove', (e) => {
     touchDeltaX = e.touches[0].clientX - touchStartX;
-  }, { passive: true });
+  }, { passive: true, signal });
 
   viewport.addEventListener('touchend', () => {
     if (isMobile()) return;
@@ -114,7 +117,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
         goToSlide(currentIndex - 1);
       }
     }
-  });
+  }, { signal });
 
   /* --- Mobile scroll sync --- */
   let scrollTimeout: ReturnType<typeof setTimeout>;
@@ -142,7 +145,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
       updateArrows();
       updateActiveItem();
     }, 60);
-  }, { passive: true });
+  }, { passive: true, signal });
 
   /* --- Keyboard --- */
   carousel.setAttribute('tabindex', '0');
@@ -152,7 +155,7 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
     } else if (e.key === 'ArrowRight' && currentIndex < itemCount - 1) {
       goToSlide(currentIndex + 1);
     }
-  });
+  }, { signal });
 
   /* --- Resize --- */
   let resizeTimeout: ReturnType<typeof setTimeout>;
@@ -165,10 +168,12 @@ function initCarousel({ carouselId, trackSelector, itemSelector }: CarouselOptio
         goToSlide(currentIndex);
       }
     }, 150);
-  });
+  }, { signal });
 
   updateArrows();
   updateActiveItem();
+
+  return () => controller.abort();
 }
 
 export { initCarousel };
