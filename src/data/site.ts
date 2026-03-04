@@ -22,8 +22,5 @@ export const SOCIAL_LINKS = {
 export const THEME_STORAGE_KEY = 'hi1-theme';
 export const SCROLL_THRESHOLD = 16;
 
-// Cloudflare Web Analytics — public site token (visible in HTML source, not a secret)
-export const CF_ANALYTICS_TOKEN = 'YOUR_CF_ANALYTICS_TOKEN';
-
 export const FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap';

@@ -1,7 +1,7 @@
 ---
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
-import { FONTS_URL, SITE, SEO, CF_ANALYTICS_TOKEN } from '@data/site';
+import { FONTS_URL, SITE, SEO } from '@data/site';
 import type { Locale } from '@i18n/config';
 import { LOCALES } from '@i18n/config';
 import { getOtherLocales, getOgLocale } from '@i18n/utils';
@@ -118,6 +118,5 @@ const otherLocales = getOtherLocales(lang);
     </main>
     <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} />
     <script src="../scripts/animations.ts"></script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token":"${CF_ANALYTICS_TOKEN}"}`}></script>
   </body>
 </html>
