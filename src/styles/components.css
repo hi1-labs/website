@@ -246,3 +246,12 @@
     .animate-on-scroll { opacity: 1; transform: none; }
     .animate-on-scroll.animate-in { animation: none; }
 }
+
+/* ========== GRADIENT TEXT ========== */
+.gradient-text {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

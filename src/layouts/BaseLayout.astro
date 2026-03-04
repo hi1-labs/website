@@ -3,8 +3,8 @@ import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
 import { FONTS_URL, SITE, SEO, THEME_STORAGE_KEY, LANG_STORAGE_KEY } from '@data/site';
 import type { Locale } from '@i18n/config';
-import { LOCALES } from '@i18n/config';
-import { getOgLocale } from '@i18n/utils';
+import { LOCALES, DEFAULT_LOCALE } from '@i18n/config';
+import { getOgLocale, getCommonTranslations, stripLocalePrefix } from '@i18n/utils';
 import '@styles/common.css';
 import '@styles/components.css';
 
@@ -18,16 +18,8 @@ interface Props {
   ogImage?: string;
   navLinks: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
-  footerAllRightsReserved: string;
   transparentNav?: boolean;
   variant?: 'default' | 'legal';
-  skipToContent?: string;
-  themeToggleLabel?: string;
-  langSwitcherLabel?: string;
-  mainNavLabel?: string;
-  homeLabel?: string;
-  menuToggleLabel?: string;
-  footerNavigationLabel?: string;
 }
 
 const {
@@ -40,22 +32,14 @@ const {
   ogImage,
   navLinks,
   footerLinks,
-  footerAllRightsReserved,
   transparentNav = false,
   variant = 'default',
-  skipToContent = 'Skip to main content',
-  themeToggleLabel = 'Toggle theme',
-  langSwitcherLabel = 'Switch language',
-  mainNavLabel = 'Main navigation',
-  homeLabel = 'hi1 labs home',
-  menuToggleLabel = 'Toggle menu',
-  footerNavigationLabel = 'Footer navigation',
 } = Astro.props;
 
+const ct = getCommonTranslations(lang);
+
 const isLegal = variant === 'legal';
-const localePattern = LOCALES.join('|');
-const localeRegex = new RegExp(`^\\/(${localePattern})`);
-const pagePath = Astro.url.pathname.replace(localeRegex, '');
+const pagePath = stripLocalePrefix(Astro.url.pathname);
 const canonicalUrl = new URL(`/${lang}${pagePath || '/'}`, SITE.url).href;
 const resolvedOgTitle = ogTitle || title;
 const resolvedOgDescription = ogDescription || description;
@@ -79,7 +63,7 @@ const langKey = LANG_STORAGE_KEY;
     {LOCALES.map((locale) => (
       <link rel="alternate" hreflang={locale} href={new URL(`/${locale}${pagePath || '/'}`, SITE.url).href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(`/en${pagePath || '/'}`, SITE.url).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(`/${DEFAULT_LOCALE}${pagePath || '/'}`, SITE.url).href} />
     <meta name="theme-color" content={SEO.themeColor} media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
@@ -115,21 +99,21 @@ const langKey = LANG_STORAGE_KEY;
     <slot name="head" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">{skipToContent}</a>
+    <a href="#main-content" class="skip-link">{ct.skipToContent}</a>
     <Nav
       links={navLinks}
       transparent={transparentNav}
       lang={lang}
-      themeToggleLabel={themeToggleLabel}
-      langSwitcherLabel={langSwitcherLabel}
-      mainNavLabel={mainNavLabel}
-      homeLabel={homeLabel}
-      menuToggleLabel={menuToggleLabel}
+      themeToggleLabel={ct.theme.toggleLabel}
+      langSwitcherLabel={ct.langSwitcher.switchTo}
+      mainNavLabel={ct.nav.mainNavLabel}
+      homeLabel={ct.nav.homeLabel}
+      menuToggleLabel={ct.nav.menuToggleLabel}
     />
     <main id="main-content" class={isLegal ? 'legal' : undefined}>
       <slot />
     </main>
-    <Footer links={footerLinks} lang={lang} allRightsReserved={footerAllRightsReserved} navigationLabel={footerNavigationLabel} />
+    <Footer links={footerLinks} lang={lang} allRightsReserved={ct.footer.allRightsReserved} navigationLabel={ct.footer.navigationLabel} />
     {!isLegal && <script src="../scripts/animations.ts"></script>}
   </body>
 </html>

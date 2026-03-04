@@ -51,8 +51,12 @@ export function getLegalTranslations(locale: Locale): LegalTranslations {
 const LOCALE_PATTERN = LOCALES.join('|');
 const LOCALE_REGEX = new RegExp(`^\\/(${LOCALE_PATTERN})`);
 
+export function stripLocalePrefix(path: string): string {
+  return path.replace(LOCALE_REGEX, '');
+}
+
 export function getLocalizedPath(currentPath: string, targetLocale: Locale): string {
-  const stripped = currentPath.replace(LOCALE_REGEX, '');
+  const stripped = stripLocalePrefix(currentPath);
   return `/${targetLocale}${stripped || '/'}`;
 }
 

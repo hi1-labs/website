@@ -83,15 +83,7 @@ const websiteSchema = {
   ogUrl={`${SITE.url}/${lang}/`}
   navLinks={navLinks}
   footerLinks={footerLinks}
-  footerAllRightsReserved={t.footer.allRightsReserved}
   transparentNav={true}
-  skipToContent={t.skipToContent}
-  themeToggleLabel={t.theme.toggleLabel}
-  langSwitcherLabel={t.langSwitcher.switchTo}
-  mainNavLabel={t.nav.mainNavLabel}
-  homeLabel={t.nav.homeLabel}
-  menuToggleLabel={t.nav.menuToggleLabel}
-  footerNavigationLabel={t.footer.navigationLabel}
 >
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
@@ -110,7 +102,7 @@ const websiteSchema = {
     <div class="hero-content">
       <p class="hero-eyebrow animate-on-scroll">{home.hero.eyebrow}</p>
       <h1 class="hero-title animate-on-scroll" style="--delay: 0.1s">
-        {home.hero.titleLine1}<br />{home.hero.titleConnector}<em>{home.hero.titleEmphasis}</em>
+        {home.hero.titleLine1}<br />{home.hero.titleConnector}<em class="gradient-text">{home.hero.titleEmphasis}</em>
       </h1>
       <p class="hero-subtitle animate-on-scroll" style="--delay: 0.2s">
         {home.hero.subtitle}

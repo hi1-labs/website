@@ -3,14 +3,12 @@ export const SITE = {
   url: 'https://hi1labs.com',
   email: 'hello@hi1labs.com',
   supportEmail: 'support@hi1labs.com',
-  privacyEmail: 'privacy@hi1labs.com',
   year: new Date().getFullYear(),
 } as const;
 
 export const SEO = {
   defaultOgImage: `${SITE.url}/og-default.png`,
   twitterHandle: '@hi1labs',
-  locale: 'en_US',
   themeColor: '#007AFF',
 } as const;
 
@@ -22,6 +20,9 @@ export const SOCIAL_LINKS = {
 export const THEME_STORAGE_KEY = 'hi1-theme';
 export const LANG_STORAGE_KEY = 'hi1-lang';
 export const SCROLL_THRESHOLD = 16;
+
+export const APP_STORE_URL = 'https://apps.apple.com/app/idXXXXXXXXX';
+export const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.hi1labs.myapp';
 
 export const FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap';

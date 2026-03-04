@@ -5,10 +5,11 @@
 // This page only appears in local dev or non-CF environments.
 // The inline script auto-redirects based on navigator.language.
 import { LANG_STORAGE_KEY } from '@data/site';
-import { LOCALES } from '@i18n/config';
+import { LOCALES, DEFAULT_LOCALE } from '@i18n/config';
 
 const langKey = LANG_STORAGE_KEY;
-const supportedLocales = JSON.stringify([...LOCALES]);
+const locales = [...LOCALES];
+const defaultLocale = DEFAULT_LOCALE;
 ---
 <!doctype html>
 <html>
@@ -17,20 +18,15 @@ const supportedLocales = JSON.stringify([...LOCALES]);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>hi1 labs</title>
-  <script is:inline define:vars={{ langKey, supportedLocales }}>
+  <script is:inline define:vars={{ langKey, locales, defaultLocale }}>
     (function () {
-      var supported = JSON.parse(supportedLocales);
       var saved = localStorage.getItem(langKey);
-      if (saved && supported.indexOf(saved) !== -1) {
+      if (saved && locales.indexOf(saved) !== -1) {
         window.location.replace('/' + saved + '/');
         return;
       }
-      var lang = (navigator.language || '').toLowerCase();
-      var target = 'en';
-      if (lang.startsWith('kk')) target = 'kk';
-      else if (lang.startsWith('ru')) target = 'ru';
-      else if (lang.startsWith('es')) target = 'es';
-      else if (lang.startsWith('pt')) target = 'pt';
+      var nl = (navigator.language || '').toLowerCase();
+      var target = locales.find(function (l) { return nl.startsWith(l); }) || defaultLocale;
       window.location.replace('/' + target + '/');
     })();
   </script>

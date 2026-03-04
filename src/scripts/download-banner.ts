@@ -1,10 +1,8 @@
+import { isIOS, isAndroid } from './platform';
+
 function initDownloadBanner(): void {
   const banner = document.getElementById('download-banner');
   if (!banner) return;
-
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/.test(ua);
-  const isAndroid = /Android/.test(ua);
 
   const iosBtn = banner.querySelector<HTMLElement>('.download-banner-ios');
   const androidBtn = banner.querySelector<HTMLElement>('.download-banner-android');

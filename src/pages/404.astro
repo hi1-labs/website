@@ -2,41 +2,34 @@
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
 import { FONTS_URL, SITE, THEME_STORAGE_KEY, LANG_STORAGE_KEY } from '@data/site';
-import { LOCALES } from '@i18n/config';
+import { LOCALES, LANG_CONFIG, DEFAULT_LOCALE } from '@i18n/config';
 import { getCommonTranslations } from '@i18n/utils';
 import '@styles/common.css';
 import '@styles/components.css';
 import '@styles/404.css';
 
-const notFoundTranslations = JSON.stringify(
-  Object.fromEntries(
-    LOCALES.map((locale) => {
-      const ct = getCommonTranslations(locale);
-      return [locale, { ...ct.notFound, allRightsReserved: ct.footer.allRightsReserved }];
-    })
-  )
+const defaultLocale = DEFAULT_LOCALE;
+const defaultT = getCommonTranslations(DEFAULT_LOCALE);
+const translations = Object.fromEntries(
+  LOCALES.map((locale) => [locale, getCommonTranslations(locale)])
 );
-const supportedLocales = JSON.stringify([...LOCALES]);
-const langConfigJson = JSON.stringify({
-  en: { flag: '\u{1F1FA}\u{1F1F8}', label: 'EN' },
-  ru: { flag: '\u{1F1F7}\u{1F1FA}', label: 'RU' },
-  kk: { flag: '\u{1F1F0}\u{1F1FF}', label: 'KK' },
-  es: { flag: '\u{1F1EA}\u{1F1F8}', label: 'ES' },
-  pt: { flag: '\u{1F1E7}\u{1F1F7}', label: 'PT' },
-});
+const locales = [...LOCALES];
+const langConfig = { ...LANG_CONFIG };
 const themeKey = THEME_STORAGE_KEY;
 const langKey = LANG_STORAGE_KEY;
+const siteName = SITE.name;
+const siteYear = SITE.year;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={DEFAULT_LOCALE}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="robots" content="noindex" />
-    <title id="page-title">Page not found — hi1 labs</title>
+    <title id="page-title">{defaultT.notFound.title} — {SITE.name}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={FONTS_URL} rel="stylesheet" />
@@ -52,22 +45,21 @@ const langKey = LANG_STORAGE_KEY;
     <Nav
       links={[]}
       transparent={false}
-      lang="en"
-      themeToggleLabel="Toggle theme"
-      langSwitcherLabel="Change language"
+      lang={DEFAULT_LOCALE}
+      themeToggleLabel={defaultT.theme.toggleLabel}
+      langSwitcherLabel={defaultT.langSwitcher.switchTo}
+      mainNavLabel={defaultT.nav.mainNavLabel}
+      homeLabel={defaultT.nav.homeLabel}
     />
     <main id="main-content" class="not-found">
       <p class="not-found-code">404</p>
-      <h1 class="not-found-title" id="nf-heading">Page not found</h1>
-      <p class="not-found-desc" id="nf-desc">The page you're looking for doesn't exist or has been moved.</p>
-      <a href="/en/" class="btn btn-primary" id="nf-link">Back to home</a>
+      <h1 class="not-found-title" id="nf-heading">{defaultT.notFound.heading}</h1>
+      <p class="not-found-desc" id="nf-desc">{defaultT.notFound.description}</p>
+      <a href={`/${DEFAULT_LOCALE}/`} class="btn btn-primary" id="nf-link">{defaultT.notFound.backHome}</a>
     </main>
-    <Footer links={[]} lang="en" allRightsReserved="All rights reserved." />
-    <script is:inline define:vars={{ notFoundTranslations, supportedLocales, langKey, langConfigJson }}>
+    <Footer links={[]} lang={DEFAULT_LOCALE} allRightsReserved={defaultT.footer.allRightsReserved} navigationLabel={defaultT.footer.navigationLabel} />
+    <script is:inline define:vars={{ translations, locales, langKey, langConfig, siteName, siteYear, defaultLocale }}>
       (function () {
-        var t = JSON.parse(notFoundTranslations);
-        var locales = JSON.parse(supportedLocales);
-        var lc = JSON.parse(langConfigJson);
         var pathLang = window.location.pathname.split('/')[1];
         var lang = locales.indexOf(pathLang) !== -1 ? pathLang : '';
         if (!lang) {
@@ -76,33 +68,38 @@ const langKey = LANG_STORAGE_KEY;
         }
         if (!lang) {
           var nl = (navigator.language || '').toLowerCase();
-          if (nl.startsWith('kk')) lang = 'kk';
-          else if (nl.startsWith('ru')) lang = 'ru';
-          else if (nl.startsWith('es')) lang = 'es';
-          else if (nl.startsWith('pt')) lang = 'pt';
-          else lang = 'en';
+          lang = locales.find(function (l) { return nl.startsWith(l); }) || defaultLocale;
         }
-        var tr = t[lang] || t.en;
-        document.getElementById('page-title').textContent = tr.title + ' — hi1 labs';
-        document.getElementById('nf-heading').textContent = tr.heading;
-        document.getElementById('nf-desc').textContent = tr.description;
-        var link = document.getElementById('nf-link');
-        link.textContent = tr.backHome;
-        link.href = '/' + lang + '/';
+        var tr = translations[lang] || translations[defaultLocale];
         document.documentElement.lang = lang;
 
-        /* Update nav logo href */
-        var navLogo = document.querySelector('.nav-logo');
-        if (navLogo) navLogo.href = '/' + lang + '/';
+        /* Update 404 content */
+        document.getElementById('page-title').textContent = tr.notFound.title + ' — ' + siteName;
+        document.getElementById('nf-heading').textContent = tr.notFound.heading;
+        document.getElementById('nf-desc').textContent = tr.notFound.description;
+        var link = document.getElementById('nf-link');
+        link.textContent = tr.notFound.backHome;
+        link.href = '/' + lang + '/';
 
-        /* Update lang switcher: current flag + label */
-        var cur = lc[lang];
+        /* Update nav */
+        var navLogo = document.querySelector('.nav-logo');
+        if (navLogo) {
+          navLogo.href = '/' + lang + '/';
+          navLogo.setAttribute('aria-label', tr.nav.homeLabel);
+        }
+        var navEl = document.querySelector('nav.nav');
+        if (navEl) navEl.setAttribute('aria-label', tr.nav.mainNavLabel);
+
+        /* Update lang switcher */
+        var cur = langConfig[lang];
         if (cur) {
           var sf = document.querySelector('.lang-switch .lang-flag');
           var sl = document.querySelector('.lang-switch .lang-label');
           if (sf) sf.textContent = cur.flag;
           if (sl) sl.textContent = cur.label;
         }
+        var langSwitch = document.querySelector('.lang-switch');
+        if (langSwitch) langSwitch.setAttribute('aria-label', tr.langSwitcher.switchTo);
 
         /* Rebuild dropdown with other locales */
         var menu = document.querySelector('.lang-dropdown-menu');
@@ -113,16 +110,22 @@ const langKey = LANG_STORAGE_KEY;
             var a = document.createElement('a');
             a.href = '/' + loc + '/404';
             a.className = 'lang-dropdown-item';
-            a.innerHTML = '<span class="lang-flag">' + lc[loc].flag + '</span><span class="lang-label">' + lc[loc].label + '</span>';
+            a.innerHTML = '<span class="lang-flag">' + langConfig[loc].flag + '</span><span class="lang-label">' + langConfig[loc].label + '</span>';
             menu.appendChild(a);
           });
         }
 
-        /* Update footer logo href and allRightsReserved */
+        /* Update theme toggle */
+        var themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) themeToggle.setAttribute('aria-label', tr.theme.toggleLabel);
+
+        /* Update footer */
         var footerLogo = document.querySelector('.footer .logo-mark');
         if (footerLogo) footerLogo.href = '/' + lang + '/';
+        var footerNav = document.querySelector('.footer-nav');
+        if (footerNav) footerNav.setAttribute('aria-label', tr.footer.navigationLabel);
         var footerCopy = document.querySelector('.footer-copy');
-        if (footerCopy) footerCopy.innerHTML = '&copy; 2026 hi1 labs. ' + tr.allRightsReserved;
+        if (footerCopy) footerCopy.innerHTML = '&copy; ' + siteYear + ' ' + siteName + '. ' + tr.footer.allRightsReserved;
       })();
     </script>
   </body>

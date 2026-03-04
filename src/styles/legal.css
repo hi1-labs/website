@@ -11,13 +11,7 @@
     border-bottom: 1px solid var(--border);
 }
 
-.legal-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--accent);
+.legal-header .section-eyebrow {
     margin-bottom: 0.75rem;
 }
 

@@ -1,6 +1,6 @@
 ---
 import ThemeToggle from '@components/ThemeToggle.astro';
-import type { Locale } from '@i18n/config';
+import { LANG_CONFIG, type Locale } from '@i18n/config';
 import { getLocalizedPath, getOtherLocales } from '@i18n/utils';
 
 interface Props {
@@ -26,14 +26,7 @@ const {
 } = Astro.props;
 
 const otherLocales = getOtherLocales(lang);
-const langConfig: Record<Locale, { flag: string; label: string }> = {
-  en: { flag: '🇺🇸', label: 'EN' },
-  ru: { flag: '🇷🇺', label: 'RU' },
-  kk: { flag: '🇰🇿', label: 'KK' },
-  es: { flag: '🇪🇸', label: 'ES' },
-  pt: { flag: '🇧🇷', label: 'PT' },
-};
-const currentLangConfig = langConfig[lang];
+const currentLangConfig = LANG_CONFIG[lang];
 const currentPath = Astro.url.pathname;
 ---
 
@@ -57,22 +50,24 @@ const currentPath = Astro.url.pathname;
       <div class="lang-dropdown-menu">
         {otherLocales.map((locale) => (
           <a href={getLocalizedPath(currentPath, locale)} class="lang-dropdown-item">
-            <span class="lang-flag">{langConfig[locale].flag}</span>
-            <span class="lang-label">{langConfig[locale].label}</span>
+            <span class="lang-flag">{LANG_CONFIG[locale].flag}</span>
+            <span class="lang-label">{LANG_CONFIG[locale].label}</span>
           </a>
         ))}
       </div>
     </details>
     <ThemeToggle label={themeToggleLabel} />
-    <button
-      id="menu-toggle"
-      class="nav-burger"
-      aria-label={menuToggleLabel}
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-    </button>
+    {links.length > 0 && (
+      <button
+        id="menu-toggle"
+        class="nav-burger"
+        aria-label={menuToggleLabel}
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    )}
   </div>
 </nav>
 

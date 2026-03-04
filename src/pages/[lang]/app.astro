@@ -9,7 +9,7 @@ import Carousel from '@components/Carousel.astro';
 import DownloadBanner from '@components/DownloadBanner.astro';
 import { LOCALES, type Locale } from '@i18n/config';
 import { getCommonTranslations, getAppTranslations } from '@i18n/utils';
-import { SITE } from '@data/site';
+import { SITE, APP_STORE_URL, GOOGLE_PLAY_URL } from '@data/site';
 import { ICON_EMAIL, ICON_SHIELD, ICON_DOCUMENT, ICON_STAR, ICON_LIGHTNING, ICON_MOON, ICON_PHONE, ICON_HEART } from '@data/icons';
 import '@styles/app.css';
 
@@ -63,14 +63,6 @@ const softwareAppSchema = {
   ogUrl={`${SITE.url}/${lang}/app/`}
   navLinks={navLinks}
   footerLinks={footerLinks}
-  footerAllRightsReserved={t.footer.allRightsReserved}
-  skipToContent={t.skipToContent}
-  themeToggleLabel={t.theme.toggleLabel}
-  langSwitcherLabel={t.langSwitcher.switchTo}
-  mainNavLabel={t.nav.mainNavLabel}
-  homeLabel={t.nav.homeLabel}
-  menuToggleLabel={t.nav.menuToggleLabel}
-  footerNavigationLabel={t.footer.navigationLabel}
 >
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
@@ -82,14 +74,14 @@ const softwareAppSchema = {
         <div class="app-icon-placeholder">🎯</div>
       </div>
 
-      <h1 class="animate-on-scroll" style="--delay: 0.1s">{appT.hero.tagline} <em>{appT.hero.taglineEmphasis}</em> {appT.hero.taglineSuffix}</h1>
+      <h1 class="animate-on-scroll" style="--delay: 0.1s">{appT.hero.tagline} <em class="gradient-text">{appT.hero.taglineEmphasis}</em> {appT.hero.taglineSuffix}</h1>
       <p class="app-hero-desc animate-on-scroll" style="--delay: 0.15s">
         {appT.hero.description}
       </p>
 
       <StoreBadges
-        appStoreUrl="https://apps.apple.com/app/idXXXXXXXXX"
-        googlePlayUrl="https://play.google.com/store/apps/details?id=com.hi1labs.myapp"
+        appStoreUrl={APP_STORE_URL}
+        googlePlayUrl={GOOGLE_PLAY_URL}
         appStoreLabel={t.storeBadges.appStoreLabel}
         appStoreName={t.storeBadges.appStoreName}
         googlePlayLabel={t.storeBadges.googlePlayLabel}
